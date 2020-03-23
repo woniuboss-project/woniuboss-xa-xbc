@@ -1,0 +1,14 @@
+bin：	测试用例的方法
+config：    存放配置信息
+lib：	公共库，对模块的动作封装
+logs：	存放生成的报告
+scripts：    生成报告HTML的方法
+testdata：  测试数据
+tools：	公共管理方法
+
+测试数据以excel方式进行保存，读取
+config目录下文件
+Account：所有账号及密码
+base：登录的浏览器、网址
+test：测试用例的路径
+testdata：excel文件读取的路径
