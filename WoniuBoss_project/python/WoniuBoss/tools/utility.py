@@ -27,7 +27,6 @@ class Utility:
             test_info.append(dict_new)
         return test_info
 
-
     #GUI方式
     # 把test_info数据转换成[(),(),()]
     @classmethod
@@ -40,6 +39,17 @@ class Utility:
             li.append(tup)
         return li
 
+
+
+    # 生成driver
+    @classmethod
+    def get_driver(cls, path):
+        contents = Utility.get_json(path)
+        from selenium import webdriver
+        driver = getattr(webdriver, contents['BROWSER'])()
+        driver.implicitly_wait(10)
+        driver.maximize_window()
+        return driver
     
     #接口
     # 从excel中读取内容，读取结果为[{},{},{}]
@@ -67,9 +77,6 @@ class Utility:
         print(test_info)
         return test_info
 
-
-
-
     #读取账号信息
     @classmethod
     def get_tuple(cls,path):
@@ -81,16 +88,43 @@ class Utility:
             li.append(tup)
         return li
 
+    # 从excel中读取内容，读取结果为[(),(),()]
+    @classmethod
+    def get_excel_to_tuple(cls, xls_file_info):
+        result = cls.get_excel_port_dict(xls_file_info)
+        li = []
+        for di in result:
+            # 通过tuple(dict.vlues())将值集转化为元组
+            tup = tuple(di.values())
+            li.append(tup)
+        return li
+
+    # 从某个路径读取文件
+    @classmethod
+    def get_txt(cls, path):
+        with open(path, encoding='utf8') as file:
+            return file.readlines()
+    #  处理换行信息
+    @classmethod
+    def trans_str(cls, path):
+        contents = cls.get_txt(path)
+        li = []
+        for content in contents:
+            content_new = content.strip('\n')
+            li.append(content_new)
+        return li
+
 if __name__ == '__main__':
     a=Utility.get_json("..\\config\\testdata.conf")
     b=Utility.get_excel_GUI_tuple(a[0])
     c=Utility.get_excel_port_dict(a[1])
-    print(b)
-    print(c)
-    acc=Utility.get_json("..\\config\\Account.conf")
-    print(acc[0])
-    d=Utility.get_tuple("..\\config\\Account.conf")
-    print(d)
+    # print(b)
+    # print(c)
+    acc=Utility.get_excel_to_tuple(a[1])
+    print(acc)
+    # d=Utility.get_tuple("..\\config\\Account.conf")
+    # print(d)
+
     # d=Utility.get_json("..\\config\\base.conf")
     # c=Utility.get_driver("..\\config\\base.conf")
     # Utility.open_page(c,d)

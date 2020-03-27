@@ -37,6 +37,7 @@ class Service:
         driver.execute_script('document.getElementById("%s").readOnly=false' % (ele_id))
 
 
+
     # 生成driver
     @classmethod
     def get_driver(cls, path):
@@ -59,29 +60,41 @@ class Service:
     def miss_login(cls, driver, base_config_path):
         cls.open_page(driver, base_config_path)
         # 通过字典方式传递cookie信息
-        from agilone.tools.utility import Utility
         contents = Utility.get_json(base_config_path)
         driver.add_cookie({'name': 'username', 'value': contents['username']})
         driver.add_cookie({'name': 'password', 'value': contents['password']})
         cls.open_page(driver, base_config_path)
 
-    
+    # 截图.仅进行截图操作
+    @classmethod
+    def get_png(cls,driver,png_path):
+        driver.get_screenshot_as_file(png_path)
 
-    def get_session(cls):
+    # 出现缺陷后的截图方法
+    @classmethod
+    def get_error_png(cls,driver):
+        import time
+        ctime = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())
+        png_path = '..\\bugpng\\error_%s.png'%(ctime)
+        cls.get_png(driver,png_path)
+
+    @classmethod
+    def get_session(cls,sum):
         base_info = Utility.get_json('..\\config\\base.conf')
-        login_url = "%s://%s:%s/%s/" % (
-        base_info['PROTOCOL'], base_info['HOSTNAME'], base_info['PORT'], base_info['AURL'],)
-        # print(login_url)
-        login_data = {'username': base_info['USERNAME'], 'password': base_info['PASSWORD'],
-                      'verifycode': base_info['VERIFYCODE']}
-        # print(login_data)
+        login_url = "%s://%s:%s/%s/" % (base_info['PROTOCOL'], base_info['HOSTNAME'], base_info['PORT'], base_info['AURL'],)
+        print(login_url)
+        base_data=Utility.get_json('..\\config\\Account.conf')
+        login_data = {'userName': base_data[sum]['userName'], 'userPass': base_data[sum]['userPass'],'checkcode': base_data[sum]['checkcode']}
+        print(login_data)
         session = requests.session()
-        session.post(login_url, login_data)
-        # print(a.text)
+        resp=session.post(login_url, login_data)
+        print(resp.text)
         return session
 
 if __name__ == '__main__':
-    a=Service.get_driver("..\\config\\base.conf")
-    Service.open_page(a,"..\\config\\base.conf")
+    # a=Service.get_driver("..\\config\\base.conf")
+    # Service.open_page(a,"..\\config\\base.conf")
+    a=Service.get_session(2)
+    print(a)
 
 
