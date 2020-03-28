@@ -1,0 +1,37 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+点击商品管理
+    sleep    5
+    Click Element    css=a.menu_item:nth-child(4) > div:nth-child(3)
+
+点击新增商品
+    sleep    5
+    Click Link    新增商品
+
+输入商品信息
+    [Arguments]    ${name}    ${money}    ${cope}
+    sleep    2
+    Select Checkbox    css=html body app-root div.main ng-component div.wn-body div.product-stock snail-product-stock div#layui-layer17.layui-layer.layui-layer-page div.layui-layer-content div.pop_window.js-product-add-model.layui-layer-wrap div.scroll div.model-form div.row.clearfix div.half-row label input.ng-untouched.ng-pristine.ng-valid
+    sleep    2
+    Input Text    css=.js-product-add-model > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)    ${name}
+    sleep    2
+    Click Element    xpath=/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[5]/div/div/div[2]/div/div[7]/div/label
+    sleep    2
+    Click Element    xpath=/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[5]/div/div/div[2]/div/div[7]/div/div/div/ul/li[2]
+    sleep    2
+    Click Element    xpath=/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[5]/div/div/div[2]/div/div[8]/div[1]/label
+    sleep    2
+    Click Element    xpath=/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[5]/div/div/div[2]/div/div[8]/div[1]/div/div/ul/li[2]
+    sleep    2
+    Click Element    css=div.wn-select:nth-child(2)
+    sleep    2
+    Click Element    css=html body app-root div.main ng-component div.wn-body div.product-stock snail-product-stock div#layui-layer17.layui-layer.layui-layer-page div.layui-layer-content div.pop_window.js-product-add-model.layui-layer-wrap div.scroll div.model-form div.row.clearfix div.wn-select.model-classify-select.text-l.open div div.wn-select-b ul.wn-option-group.text-c li
+    sleep    2
+    Input Text    css=div.row:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)    ${money}
+    Input Text    css=div.row:nth-child(9) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)    ${cope}
+
+点击确认按钮
+    sleep    5
+    Click Element    css=.js-product-add-model > div:nth-child(3) > div:nth-child(2)

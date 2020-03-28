@@ -1,0 +1,9 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+打开蜗牛小店页面
+    Open Browser    https://snailpet.com/index    Firefox
+
+关闭蜗牛小店页面
+    Close Browser

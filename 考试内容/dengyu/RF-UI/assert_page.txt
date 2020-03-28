@@ -1,0 +1,29 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+登录断言
+    [Arguments]    ${shop_name}
+    Wait Until Element Is Visible    id=shop_name
+    Element Should Contain    id=shop_name    ${shop_name}
+
+新增商品断言
+    [Arguments]    ${content}
+    Wait Until Element Is Visible    link=入库
+    Element Should Contain    link=入库    ${content}
+
+新增会员断言
+    [Arguments]    ${content}
+    Wait Until Element Is Visible    link=收银
+    Element Should Contain    link=收银    ${content}
+    [Teardown]
+
+删除会员断言
+    [Arguments]    ${content}
+    sleep    2
+    Element Should Not Contain    link=删除    ${content}
+
+门店支出断言
+    [Arguments]    ${content}
+    Wait Until Element Is Visible    link=修改
+    Element Should Contain    link=修改    ${content}

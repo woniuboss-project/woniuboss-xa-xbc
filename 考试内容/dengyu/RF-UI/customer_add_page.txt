@@ -1,0 +1,31 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+点击会员
+    sleep    5
+    Click Element    css=a.menu_item:nth-child(3) > div:nth-child(3)
+
+点击新增会员
+    sleep    2
+    Click Link    新增会员
+
+输入会员姓名
+    [Arguments]    ${name}
+    sleep    3
+    Input Text    name=name    ${name}
+    [Teardown]
+
+输入会员电话
+    [Arguments]    ${phone}
+    sleep    3
+    Input Text    name=phone    ${phone}
+
+输入宠物姓名
+    [Arguments]    ${pet_name}
+    sleep    3
+    Input Text    name=petName    ${pet_name}
+
+点击会员确认按钮
+    sleep    3
+    Click Element    css=div.pop_window:nth-child(1) > div:nth-child(3) > div:nth-child(2)

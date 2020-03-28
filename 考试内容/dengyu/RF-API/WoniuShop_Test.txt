@@ -1,0 +1,23 @@
+*** Settings ***
+Resource          flow_page.txt
+
+*** Test Cases ***
+login_test
+    登录流程    13022959861    dy849990388    /v2/Passport/login
+    登录流程    130229    dy849990388    /v2/Passport/login
+    登录流程    13022959861    dy8499    /v2/Passport/login
+
+shop_cost_test
+    门店支出流程    8000    v2/Shop/addSpending
+    门店支出流程    @##￥    v2/Shop/addSpending
+    门店支出流程    acdd    v2/Shop/addSpending
+
+delete_shop_test
+    门店支出删除流程    282970    v2/Shop/delSpending
+    门店支出删除流程    282999    v2/Shop/delSpending
+    门店支出删除流程    abn#￥#    v2/Shop/delSpending
+
+goods_storage_test
+    商品入库流程    30    v2/product/update/stocks
+    商品入库流程    @##    v2/product/update/stocks
+    商品入库流程    asbf    v2/product/update/stocks

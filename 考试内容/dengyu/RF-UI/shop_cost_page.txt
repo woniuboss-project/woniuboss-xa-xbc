@@ -1,0 +1,30 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+点击支出模块
+    sleep    5
+    Click Element    css=a.menu_item:nth-child(7) > div:nth-child(3)
+
+点击新增一笔
+    sleep    2
+    Click Link    记一笔
+
+点击门店租金图标
+    sleep    2
+    Click Element    css=li.active
+
+输入金额
+    [Arguments]    ${money}
+    sleep    2
+    Input Text    name=price    ${money}
+
+输入时间
+    [Arguments]    ${date}
+    sleep    2
+    Input Text    id=id-exp-date    ${date}
+
+点击支出确认按钮
+    sleep    5
+    Click Element    css=div.pop_window:nth-child(1) > div:nth-child(3) > div:nth-child(2)
+    sleep    5

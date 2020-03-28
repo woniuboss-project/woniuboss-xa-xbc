@@ -1,0 +1,17 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+输入电话
+    [Arguments]    ${phone}
+    Input Text    name=phone    ${phone}
+
+输入密码
+    [Arguments]    ${password}
+    Input Password    name=password    ${password}
+
+点击更新公告按钮
+    Click Element    css=html body div#layui-layer2.layui-layer.layui-layer-page div.layui-layer-content div.pop_window.js-update-model.layui-layer-wrap div.option.clearfix div.red_btn
+
+点击登录确认按钮
+    Click Element    css=html body app-root div.main snail-index div.wn-login div.wn-content div.wn-login-body.clearfix div.cla-op-two div.cla-login-rong div.cla-login-left a.ori-btn

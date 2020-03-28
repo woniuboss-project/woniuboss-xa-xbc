@@ -1,0 +1,83 @@
+*** Settings ***
+Resource          common_page.txt
+Resource          login_page.txt
+Resource          assert_page.txt
+Resource          goods_page.txt
+Resource          customer_add_page.txt
+Resource          customer_delete_page.txt
+Resource          shop_cost_page.txt
+
+*** Keywords ***
+登录流程
+    [Arguments]    ${phone}    ${password}    ${shop_name}
+    打开蜗牛小店页面
+    sleep    5
+    点击更新公告按钮
+    输入电话    ${phone}
+    输入密码    ${password}
+    点击登录确认按钮
+    Run Keyword And Continue On Failure    登录断言    ${shop_name}
+    关闭蜗牛小店页面
+
+新增商品流程及验证
+    [Arguments]    ${name}    ${money}    ${cope}    ${content}
+    打开蜗牛小店页面
+    sleep    5
+    点击更新公告按钮
+    Input Text    name=phone    13022959861
+    Input Password    name=password    dy849990388
+    点击登录确认按钮
+    点击商品管理
+    点击新增商品
+    输入商品信息    ${name}    ${money}    ${cope}
+    点击会员确认按钮
+    Run Keyword And Continue On Failure    新增商品断言    ${content}
+    关闭蜗牛小店页面
+
+新增会员流程及验证
+    [Arguments]    ${name}    ${phone}    ${pet_name}    ${content}
+    打开蜗牛小店页面
+    sleep    5
+    点击更新公告按钮
+    Input Text    name=phone    13022959861
+    Input Password    name=password    dy849990388
+    点击登录确认按钮
+    点击会员模块
+    点击新增会员
+    输入会员姓名    ${name}
+    输入会员电话    ${phone}
+    输入宠物姓名    ${pet_name}
+    点击会员确认按钮
+    Run Keyword And Continue On Failure    新增会员断言    ${content}
+    关闭蜗牛小店页面
+
+删除会员流程及验证
+    [Arguments]    ${content}
+    打开蜗牛小店页面
+    sleep    5
+    点击更新公告按钮
+    Input Text    name=phone    13022959861
+    Input Password    name=password    dy849990388
+    点击登录确认按钮
+    点击会员模块
+    点击删除链接
+    点击删除确认按钮
+    Run Keyword And Continue On Failure    删除会员断言    ${content}
+    关闭蜗牛小店页面
+
+门店支出流程及断言
+    [Arguments]    ${money}    ${date}    ${content}
+    打开蜗牛小店页面
+    sleep    5
+    点击更新公告按钮
+    Input Text    name=phone    13022959861
+    Input Password    name=password    dy849990388
+    点击登录确认按钮
+    点击支出模块
+    点击新增一笔
+    点击门店租金图标
+    输入金额    ${money}
+    输入时间    ${date}
+    点击支出确认按钮
+    Run Keyword And Continue On Failure    门店支出断言    ${content}
+    关闭蜗牛小店页面
