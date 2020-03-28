@@ -1,0 +1,17 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Keywords ***
+点击新增商品
+    Click Element    css:.cla-a-li > a:nth-child(2)
+
+输入商品查询操作
+    [Arguments]    ${goods}
+    Input Text    id:idInputCrux    ${goods}
+    Click Element    xpath:/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[1]/a
+
+点击删除商品
+    Click Element    xpath:/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[3]/table/tbody/tr/td[8]/a[5]/span/span[2]
+
+点击商品入库
+    Click Element    xpath:/html/body/app-root/div/ng-component/div/div/snail-product-stock/div[3]/table/tbody/tr/td[9]/a[1]

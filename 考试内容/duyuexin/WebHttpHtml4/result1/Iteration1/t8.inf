@@ -1,0 +1,13 @@
+[t8]
+SnapshotXmlFile=snapshot_4.xml
+ContentType=application/json
+StepName=Submit Data: web_submit_data
+Total=1
+FileName1=t8.json
+RequestHeaderFile=t8_RequestHeader.txt
+ResponseHeaderFile=t8_ResponseHeader.txt
+RawStepEndTime=1585366155984
+RawStepName=web_submit_data
+RequestBodyFile=t8_RequestBody.txt
+RawStepStartTime=1585366155897
+URL1=file:

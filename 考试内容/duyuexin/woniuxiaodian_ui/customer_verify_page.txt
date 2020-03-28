@@ -1,0 +1,10 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Keywords ***
+验证是否保存成功
+    [Arguments]    ${text}
+    Element Should Be Visible    ${text}
+
+等待出现保存成功的信息
+    Wait Until Element Is Visible    xpath:/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr[1]/td[2]/a/span

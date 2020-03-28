@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20200328 11:31:03.299" generator="Robot 3.1.2 (Python 2.7.17 on win32)">
+<suite source="C:\Python27\woniu_25" id="s1" name="Woniu 25">
+<suite source="C:\Python27\woniu_25\woniumin_vga.txt" id="s1-s1" name="Woniumin Vga">
+<test id="s1-s1-t1" name="login">
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>password=wangqi123456</arg>
+<arg>phone=18709143371</arg>
+<arg>shop_id=null</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200328 11:31:03.707" level="INFO">${body} = {u'password': u'wangqi123456', u'phone': u'18709143371', u'shop_id': u'null'}</msg>
+<status status="PASS" endtime="20200328 11:31:03.707" starttime="20200328 11:31:03.706"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>session</arg>
+<arg>https://snailpet.com</arg>
+</arguments>
+<msg timestamp="20200328 11:31:03.709" level="INFO">Creating Session using : alias=session, url=https://snailpet.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200328 11:31:03.710" starttime="20200328 11:31:03.708"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>session</arg>
+<arg>/v2/Passport/login</arg>
+<arg>${body}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200328 11:31:03.713" level="INFO">POST Request using : uri=/v2/Passport/login, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'content-type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.23.0'} 
+data={"password": "wangqi123456", "phone": "18709143371", "shop_id": "null"} 
+json=None</msg>
+<msg timestamp="20200328 11:31:04.648" level="INFO">C:\Python27\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made to host 'snailpet.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20200328 11:31:04.649" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200328 11:31:04.649" starttime="20200328 11:31:03.711"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.text}</arg>
+</arguments>
+<msg timestamp="20200328 11:31:04.651" level="INFO">{"error":1,"data":null,"code":6001,"message":"服务繁忙 code:LT001"}
+</msg>
+<status status="PASS" endtime="20200328 11:31:04.651" starttime="20200328 11:31:04.649"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>ex_current_page=首页</arg>
+<arg>ex_kind=点击</arg>
+<arg>ex_next_page=会员</arg>
+<arg>ex_title=会员</arg>
+<arg>shop_id=17553</arg>
+</arguments>
+<assign>
+<var>${conf_data}</var>
+</assign>
+<msg timestamp="20200328 11:31:04.652" level="INFO">${conf_data} = {u'ex_current_page': u'\u9996\u9875', u'ex_kind': u'\u70b9\u51fb', u'ex_next_page': u'\u4f1a\u5458', u'ex_title': u'\u4f1a\u5458', u'shop_id': u'17553'}</msg>
+<status status="PASS" endtime="20200328 11:31:04.652" starttime="20200328 11:31:04.651"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>session</arg>
+<arg>/v2/analysis_es/action</arg>
+<arg>${conf_data}</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${s_resp}</var>
+</assign>
+<msg timestamp="20200328 11:31:04.654" level="INFO">POST Request using : uri=/v2/analysis_es/action, files=None, params=None, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', u'content-type': u'application/json', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.23.0'} 
+data={"ex_current_page": "\u9996\u9875", "ex_kind": "\u70b9\u51fb", "ex_next_page": "\u4f1a\u5458", "ex_title": "\u4f1a\u5458", "shop_id": "17553"} 
+json=None</msg>
+<msg timestamp="20200328 11:31:04.880" level="INFO">C:\Python27\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made to host 'snailpet.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20200328 11:31:04.880" level="INFO">${s_resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20200328 11:31:04.881" starttime="20200328 11:31:04.653"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${s_resp.text}</arg>
+</arguments>
+<msg timestamp="20200328 11:31:04.882" level="INFO">{"error":1,"data":null,"code":6001,"message":"服务繁忙 code:LT001"}
+</msg>
+<status status="PASS" endtime="20200328 11:31:04.883" starttime="20200328 11:31:04.881"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${s_resp.text}</arg>
+<arg>data=success</arg>
+</arguments>
+<msg timestamp="20200328 11:31:04.885" level="FAIL">{"error":1,"data":null,"code":6001,"message":"服务繁忙 code:LT001"}
+ != data=success</msg>
+<status status="FAIL" endtime="20200328 11:31:04.886" starttime="20200328 11:31:04.884"></status>
+</kw>
+<status status="FAIL" endtime="20200328 11:31:04.886" critical="yes" starttime="20200328 11:31:03.704">{"error":1,"data":null,"code":6001,"message":"服务繁忙 code:LT001"}
+ != data=success</status>
+</test>
+<status status="FAIL" endtime="20200328 11:31:04.889" starttime="20200328 11:31:03.374"></status>
+</suite>
+<status status="FAIL" endtime="20200328 11:31:04.892" starttime="20200328 11:31:03.330"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Woniu 25" pass="0">Woniu 25</stat>
+<stat fail="1" id="s1-s1" name="Woniumin Vga" pass="0">Woniu 25.Woniumin Vga</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20200328 11:31:03.290" level="WARN">Automatically parsing other than '*.robot' files is deprecated. Convert 'C:\Python27\woniu_25\woniumin_vga.txt' to '*.robot' format or use '--extension' to explicitly configure which files to parse.</msg>
+</errors>
+</robot>

@@ -1,0 +1,16 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Keywords ***
+打开浏览器
+    [Arguments]    ${url}
+    Open Browser    ${url}
+
+关闭浏览器
+    Close Browser
+
+点击进入会员管理页面
+    Click Element    css:a.menu_item:nth-child(3) > div:nth-child(3)
+
+点击进入商品管理页面
+    Click Element    css:a.menu_item:nth-child(4)

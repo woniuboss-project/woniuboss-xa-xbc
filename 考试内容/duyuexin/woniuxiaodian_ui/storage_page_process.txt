@@ -1,0 +1,30 @@
+*** Settings ***
+Resource          storage_page.txt
+Resource          storage_second_page.txt
+
+*** Keywords ***
+新增商品处理
+    [Arguments]    ${goods_name}    ${chenben}    ${price}
+    点击新增商品
+    sleep    2s
+    点击生成条码
+    输入商品名称    ${goods_name}
+    选择商品大分类
+    sleep    4s
+    选择商品小分类
+    输入成本    ${chenben}
+    输入售价    ${price}
+    点击保存
+
+删除商品处理
+    点击删除商品
+    sleep    2s
+    删除商品点击确定
+
+商品入库流程
+    [Arguments]    ${number}
+    点击商品入库
+    sleep    2s
+    输入商品入库数量    ${number}
+    sleep    1s
+    商品入库点击确定

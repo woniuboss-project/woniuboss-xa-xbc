@@ -1,0 +1,82 @@
+*** Settings ***
+Resource          page_process.txt
+Resource          common.txt
+Resource          storage_page_process.txt
+
+*** Keywords ***
+登录流程
+    [Arguments]    ${username}    ${password}
+    打开浏览器    https://snailpet.com/index
+    Sleep    3s
+    登录页面处理    ${username}    ${password}
+    Run Keyword And Continue On Failure    欢迎页面处理
+    关闭浏览器
+
+绕过登录流程
+    打开浏览器    https://snailpet.com/index
+    Sleep    3s
+    登录页面处理    15332277492    dy940128
+
+新增会员流程
+    [Arguments]    ${name}    ${phone}    ${petname}
+    绕过登录流程
+    sleep    5s
+    点击进入会员管理页面
+    sleep    4s
+    新增会员处理    ${name}    ${phone}    ${petname}
+    Run Keyword And Continue On Failure    验证会员新增处理
+
+删除会员流程
+    绕过登录流程
+    sleep    5s
+    点击进入会员管理页面
+    sleep    4s
+    点击删除会员操作
+    删除会员点击确定按钮
+
+修改会员流程
+    [Arguments]    ${edit_name}    ${edit_phone}    ${edit_petname}
+    绕过登录流程
+    sleep    5s
+    点击进入会员管理页面
+    sleep    4s
+    修改会员处理    ${edit_name}    ${edit_phone}    ${edit_petname}
+
+查询会员流程
+    [Arguments]    ${query_customer}
+    绕过登录流程
+    sleep    5s
+    点击进入会员管理页面
+    sleep    4s
+    查询会员处理    ${query_customer}
+
+新增商品流程
+    [Arguments]    ${goods_name}    ${chenben}    ${price}
+    绕过登录流程
+    sleep    5s
+    点击进入商品管理页面
+    sleep    4s
+    新增商品处理    ${goods_name}    ${chenben}    ${price}
+
+删除商品流程
+    绕过登录流程
+    sleep    5s
+    点击进入商品管理页面
+    sleep    4s
+    删除商品处理
+
+查询商品流程
+    [Arguments]    ${goods}
+    绕过登录流程
+    sleep    5s
+    点击进入商品管理页面
+    sleep    4s
+    输入商品查询操作    ${goods}
+
+商品入库流程
+    [Arguments]    ${number}
+    绕过登录流程
+    sleep    5s
+    点击进入商品管理页面
+    sleep    4s
+    Storage Page Process.商品入库流程    ${number}
