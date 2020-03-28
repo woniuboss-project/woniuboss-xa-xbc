@@ -1,0 +1,34 @@
+*** Settings ***
+Library           RequestsLibrary
+
+*** Variables ***
+&{headers}        content-type=application/json
+
+*** Test Cases ***
+login
+    ${body}    Create Dictionary    password=wangqi123456    phone=18709143371    shop_id=null
+    Create Session    session    https://snailpet.com
+    ${resp}    Post Request    session    /v2/Passport/login    ${body}    headers=${headers}
+    Log    ${resp.text}
+    #Should Be Equal As Strings    ${resp.text}    data=success
+    #会员
+    ${conf_data}    Create Dictionary    ex_current_page=首页    ex_kind=点击    ex_next_page=会员    ex_title=会员    shop_id=17553
+    ${s_resp}    Post Request    session    /v2/analysis_es/action    ${conf_data}    headers=${headers}
+    Log    ${s_resp.text}
+    Should Be Equal As Strings    ${s_resp.text}    data=success
+    #收银
+    ${maert_data}    Create Dictionary    cart_type=0    member_id=586408    out_id=0    shop_id=17553
+    ${m_resp}    Post Request    session    v2/cats/change_member    ${maert_data}    headers=${headers}
+    Log    ${m_resp.text}
+    Should Be Equal As Strings    ${m_resp.text}    shop_id=17553
+    #查询销售
+    ${ca_data}    Create Dictionary    ex_current_page=首页    ex_kind=点击    ex_next_page=查询销售    ex_title=查询销售
+    ${a_resp}    Post Request    session    /v2/analysis_es/action    ${ca_data}    headers=${headers}
+    Log    ${a_resp.text}
+    Should Be Equal As Strings    ${a_resp.text}    data=success
+    #记一笔
+    ${reg_data}    Create Dictionary    actionTime=1585584000    type=2    mark=    amount=140    shopId=17553
+    ...    shop_id=17553
+    ${g_resp}    Post Request    session    /v2/Shop/addSpending    ${reg_data}    headers=${headers}
+    Log    ${g_resp.text}
+    Should Be Equal As Strings    ${g_resp.text}    shopId=17553

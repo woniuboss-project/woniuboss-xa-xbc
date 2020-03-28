@@ -1,0 +1,44 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Test Cases ***
+login
+    Open Browser    https://snailpet.com/index
+    Input Text    xpath:/html/body/app-root/div/snail-index/div/div/div/div[3]/div/div[1]/input[1]    18709143371
+    Input Password    xpath:/html/body/app-root/div/snail-index/div/div/div/div[3]/div/div[1]/input[2]    wangqi123456
+    sleep    5
+    click element    css:html body div#layui-layer2.layui-layer.layui-layer-page div.layui-layer-content div.pop_window.js-update-model.layui-layer-wrap div.option.clearfix div.red_btn
+    click element    css:html body app-root div.main snail-index div.wn-login div.wn-content div.wn-login-body.clearfix div.cla-op-two div.cla-login-rong div.cla-login-left a.ori-btn
+    #Wait Until Element Is Visible    css:html body app-root snail-header div#header.clearfix div.user_info.clearfix a.list.header-contact-box.gray-text    打开钱箱
+    #收银
+    sleep    5
+    click element    xpath:/html/body/app-root/div/snail-menu-nav/div/a[1]/div[1]
+    #Wait Until Element Is Visible    xpath:/html/body/app-root/div/snail-cash-main/snail-cash/div[1]/div/div[2]/div/div[1]/div[2]/div[2]/div    选择会员
+    #选择喵粮
+    #click element    id:category_id_841800
+    #Wait Until Element Is Visible    css:html body app-root div.main snail-cash-main snail-cash div.wn-body div.content div.main_content div.white div#content.product_area.clearfix.js-product-ul ul li.product.js-product-list.clearfix div.info_area div.name.js-name span    罐头
+    #选择一个
+    sleep    5
+    click element    xpath:/html/body/app-root/div/snail-cash-main/snail-cash/div[1]/div/div[2]/div/div[2]/ul/li/div[2]/div[2]/div[3]/a[2]
+    #Wait Until Element Is Visible    id:proCountPrice    20.00
+    #点击下单
+    sleep    5
+    click element    xpath:/html/body/app-root/div/snail-cash-main/snail-cash/div[1]/div/div[3]/a/div
+    #Wait Until Element Is Visible    id:id-left-out    散客
+    #选择散客
+    sleep    5
+    click element    xpath://*[@id="id-left-out"]
+    #Wait Until Element Is Visible    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[9]/div/a    下一步
+    #点击下一步
+    sleep    5
+    #click element    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[9]/div/a
+    #Wait Until Element Is Visible    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[12]/a[2]    完成
+    #选择微信
+    #sleep    5
+    #click element    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[4]/ul[1]/li[2]/div[1]/img[2]
+    #Wait Until Element Is Visible    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[4]/ul[2]/li[11]/span[2]    20.00
+    #点击完成
+    #sleep    5
+    #click element    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[4]/ul[1]/li[2]/div[1]/img[2]
+    #Wait Until Element Is Visible    xpath:/html/body/app-root/div/snail-cash-main/snail-cash-pay/div[1]/div/div/div/div/div[4]/div[1]/div[13]/span    收款成功
+    Close Browser
