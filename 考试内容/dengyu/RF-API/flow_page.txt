@@ -1,0 +1,19 @@
+*** Settings ***
+Resource          post_page.txt
+
+*** Keywords ***
+登录流程
+    [Arguments]    ${phone}    ${password}    ${login_path}
+    登录数据请求及验证    ${phone}    ${password}    ${login_path}
+
+门店支出流程
+    [Arguments]    ${amount}    ${shop_cost_path}
+    门店支出请求及验证    ${amount}    ${shop_cost_path}
+
+门店支出删除流程
+    [Arguments]    ${spendingid}    ${shop_delete_path}
+    删除门店支出请求及验证    ${spendingid}    ${shop_delete_path}
+
+商品入库流程
+    [Arguments]    ${number}    ${storage_url}
+    商品入库请求及验证    ${number}    ${storage_url}

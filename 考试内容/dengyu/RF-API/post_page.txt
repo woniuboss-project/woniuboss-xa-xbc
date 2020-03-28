@@ -1,0 +1,37 @@
+*** Settings ***
+Resource          common_page.txt
+
+*** Keywords ***
+登录数据请求及验证
+    [Arguments]    ${phone}    ${password}    ${login_path}
+    ${login_resp}    创建session    ${phone}    ${password}    ${login_path}
+    log    ${login_resp.json()}
+    Run Keyword If    ${login_resp.json()}[error]==0    Log    login test pass
+    ...    ELSE    Run Keyword    Log    login test fail
+    [Return]    ${login_resp}
+
+门店支出请求及验证
+    [Arguments]    ${amount}    ${shop_cost_path}
+    创建session    13022959861    dy849990388    /v2/Passport/login
+    ${shop_cost_datds}    Create Dictionary    actionTime=1584374400    type=1    mark=    amount=${amount}    shopId=17532
+    ...    shop_id=17532
+    ${shop_cost_resp}    Post Request    session    ${shop_cost_path}    ${shop_cost_datds}    headers=${headers}
+    Run Keyword If    ${shop_cost_resp.json()}[error]==0    Log    shop cost test pass
+    ...    ELSE    Run Keyword    Log    shop cost test fail
+
+删除门店支出请求及验证
+    [Arguments]    ${spendingid}    ${shop_delete_path}
+    创建session    13022959861    dy849990388    /v2/Passport/login
+    ${shop_delete_datds}    Create Dictionary    shopId=17532    spendingid=${spendingid}    shop_id=17532
+    ${shop_delete_resp}    Post Request    session    ${shop_delete_path}    ${shop_delete_datds}    headers=${headers}
+    Run Keyword If    ${shop_delete_resp.json()}[error]==0    Log    shop delete test pass
+    ...    ELSE    Run Keyword    Log    shop delete test fail
+
+商品入库请求及验证
+    [Arguments]    ${number}    ${storage_url}
+    创建session    13022959861    dy849990388    /v2/Passport/login
+    ${storage_datas}    Create Dictionary    productId=2134119    shopId=17532    number=${number}    mark=    inPrice=20
+    ...    shelf_life=0    production_time= null    exp_time= null    shop_id=17532
+    ${storage_resp}    Post Request    session    ${storage_url}    ${storage_datas}    headers=${headers}
+    Run Keyword If    ${storage_resp.json()}[error]==0    Log    storage test pass
+    ...    ELSE    Run Keyword    Log    storage test fail

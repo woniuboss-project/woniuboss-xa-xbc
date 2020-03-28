@@ -1,0 +1,15 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+点击会员模块
+    sleep    5
+    Click Element    css=a.menu_item:nth-child(3) > div:nth-child(3)
+
+点击删除链接
+    sleep    5
+    click link    删除
+
+点击删除确认按钮
+    sleep    5
+    Click link    确定

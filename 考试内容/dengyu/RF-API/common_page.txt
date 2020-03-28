@@ -1,0 +1,13 @@
+*** Settings ***
+Library           RequestsLibrary
+
+*** Variables ***
+&{headers}        Content-Type=application/json
+
+*** Keywords ***
+创建session
+    [Arguments]    ${phone}    ${password}    ${login_path}
+    ${login_data}    Create Dictionary    phone=${phone}    password=${password}    shop_id=null
+    Create Session    session    https://snailpet.com
+    ${login_resp}    Post Request    session    ${login_path}    ${login_data}    headers=${headers}
+    [Return]    ${login_resp}
