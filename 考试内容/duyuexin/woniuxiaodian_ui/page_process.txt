@@ -1,0 +1,43 @@
+*** Settings ***
+Resource          login_page.txt
+Resource          welcome_page.txt
+Resource          customer_manage_page.txt
+Resource          customer_manage_second_page.txt
+Resource          customer_verify_page.txt
+
+*** Keywords ***
+登录页面处理
+    [Arguments]    ${username}    ${password}
+    Click Element    xpath:/html/body/div[3]/div/div/div[3]/div[2]
+    输入用户名    ${username}
+    输入密码    ${password}
+    点击登录按钮
+
+欢迎页面处理
+    等待登录成功页面显示
+    检查是否登录成功
+
+新增会员处理
+    [Arguments]    ${name}    ${phone}    ${petname}
+    点击新增会员
+    sleep    3s
+    输入姓名    ${name}
+    输入电话    ${phone}
+    输入宠物名    ${petname}
+    点击确定按钮
+
+验证会员新增处理
+    等待出现保存成功的信息
+    验证是否保存成功    保存成功！
+
+修改会员处理
+    [Arguments]    ${edit_name}    ${edit_phone}    ${edit_petname}
+    点击会员修改操作
+    编辑姓名    ${edit_name}
+    编辑电话    ${edit_phone}
+    编辑宠物名    ${edit_petname}
+    点击确定按钮
+
+查询会员处理
+    [Arguments]    ${query_customer}
+    输入会员查询操作    ${query_customer}

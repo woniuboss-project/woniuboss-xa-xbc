@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IF:\Testdev\WebHttpHtml4
+-ID:\Program Files (x86)\HPE\LoadRunner\include
+-ef:\testdev\webhttphtml4\\logfile.log
+f:\testdev\webhttphtml4\\combined_WebHttpHtml4.c
+f:\testdev\webhttphtml4\\pre_cci.c

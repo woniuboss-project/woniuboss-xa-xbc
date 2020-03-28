@@ -1,0 +1,32 @@
+[
+    {
+        "stepId": "STEP1",
+        "stepName": "Submit Data: web_submit_data",
+        "infFile": "t2.inf",
+        "time": 1585366155538
+    },
+    {
+        "stepId": "STEP2",
+        "stepName": "Custom Request: web_custom_request",
+        "infFile": "t4.inf",
+        "time": 1585366155773
+    },
+    {
+        "stepId": "STEP3",
+        "stepName": "Submit Data: add_customer_data",
+        "infFile": "t6.inf",
+        "time": 1585366155884
+    },
+    {
+        "stepId": "STEP4",
+        "stepName": "Submit Data: web_submit_data",
+        "infFile": "t8.inf",
+        "time": 1585366155994
+    },
+    {
+        "stepId": "STEP5",
+        "stepName": "Submit Data: web_submit_data",
+        "infFile": "t10.inf",
+        "time": 1585366156569
+    }
+]

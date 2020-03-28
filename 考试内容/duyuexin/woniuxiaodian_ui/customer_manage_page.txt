@@ -1,0 +1,16 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Keywords ***
+点击新增会员
+    Click Element    css:div.screen-edit-btn-new:nth-child(7) > a:nth-child(2)
+
+点击删除会员操作
+    Click Element    xpath:/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr[1]/td[10]/a[4]
+
+点击会员修改操作
+    Click Element    xpath:/html/body/app-root/div/snail-member-main/snail-members/div[1]/div/div[2]/table/tbody/tr[1]/td[10]/a[3]
+
+输入会员查询操作
+    [Arguments]    ${query_customer}
+    Input Text    id:idMenbCrux    ${query_customer}

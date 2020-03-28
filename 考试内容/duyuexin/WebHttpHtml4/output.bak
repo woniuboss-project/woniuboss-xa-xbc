@@ -1,0 +1,41 @@
+Virtual User Script started at: 2020/3/28 11:24:59
+Starting action vuser_init.
+Web Turbo Replay of LoadRunner 12.55.0 for Windows 10; build 911 (7ÔÂ 24 2017 19:46:00)  	[MsgId: MMSG-26983]
+Run mode: HTML  	[MsgId: MMSG-26993]
+Replay user agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)  	[MsgId: MMSG-26988]
+Run-Time Settings file: "F:\Testdev\WebHttpHtml4\\default.cfg"  	[MsgId: MMSG-27141]
+Ending action vuser_init.
+Running Vuser...
+Starting iteration 1.
+Maximum number of concurrent connections per server: 6  	[MsgId: MMSG-26989]
+Starting action Action.
+Action.c(5): web_reg_save_param_json started  	[MsgId: MMSG-26355]
+Action.c(5): Registering web_reg_save_param_json was successful  	[MsgId: MMSG-26390]
+Action.c(14): web_submit_data("web_submit_data") started  	[MsgId: MMSG-26355]
+Action.c(14): HTML parsing not performed for Content-Type "application/json" ("ParseHtmlContentType" Run-Time Setting is "TEXT"). URL="https://snailpet.com/v2/Passport/login"  	[MsgId: MMSG-26548]
+Action.c(14): web_submit_data("web_submit_data") was successful, 72 body bytes, 502 header bytes  	[MsgId: MMSG-26386]
+Action.c(28): login test pass
+Action.c(33): web_reg_save_param_json started  	[MsgId: MMSG-26355]
+Action.c(33): Registering web_reg_save_param_json was successful  	[MsgId: MMSG-26390]
+Action.c(42): web_custom_request("web_custom_request") started  	[MsgId: MMSG-26355]
+Action.c(42): HTML parsing not performed for Content-Type "application/json" ("ParseHtmlContentType" Run-Time Setting is "TEXT"). URL="https://snailpet.com/v2/Members/del"  	[MsgId: MMSG-26548]
+Action.c(42): web_custom_request("web_custom_request") was successful, 72 body bytes, 502 header bytes  	[MsgId: MMSG-26386]
+Action.c(53): del customer test pass
+Action.c(58): web_reg_save_param_json started  	[MsgId: MMSG-26355]
+Action.c(58): Registering web_reg_save_param_json was successful  	[MsgId: MMSG-26390]
+Action.c(66): web_submit_data("add_customer_data") started  	[MsgId: MMSG-26355]
+Action.c(66): HTML parsing not performed for Content-Type "application/json" ("ParseHtmlContentType" Run-Time Setting is "TEXT"). URL="https://snailpet.com/v2/Members/add"  	[MsgId: MMSG-26548]
+Action.c(66): web_submit_data("add_customer_data") was successful, 72 body bytes, 502 header bytes  	[MsgId: MMSG-26386]
+Action.c(87): add customer test pass
+Action.c(93): web_reg_save_param_json started  	[MsgId: MMSG-26355]
+Action.c(93): Registering web_reg_save_param_json was successful  	[MsgId: MMSG-26390]
+Action.c(102): web_submit_data("web_submit_data") started  	[MsgId: MMSG-26355]
+Action.c(102): HTML parsing not performed for Content-Type "application/json" ("ParseHtmlContentType" Run-Time Setting is "TEXT"). URL="https://snailpet.com/v2/Product/delByIds"  	[MsgId: MMSG-26548]
+Action.c(102): web_submit_data("web_submit_data") was successful, 72 body bytes, 502 header bytes  	[MsgId: MMSG-26386]
+Action.c(113): del goods test pass
+Ending action Action.
+Ending iteration 1.
+Ending Vuser...
+Starting action vuser_end.
+Ending action vuser_end.
+Vuser Terminated.

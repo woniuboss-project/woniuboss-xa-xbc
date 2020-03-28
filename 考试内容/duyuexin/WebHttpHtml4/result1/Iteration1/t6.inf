@@ -1,0 +1,13 @@
+[t6]
+SnapshotXmlFile=snapshot_3.xml
+ContentType=application/json
+StepName=Submit Data: add_customer_data
+Total=1
+FileName1=t6.json
+RequestHeaderFile=t6_RequestHeader.txt
+ResponseHeaderFile=t6_ResponseHeader.txt
+RawStepEndTime=1585366155876
+RawStepName=add_customer_data
+RequestBodyFile=t6_RequestBody.txt
+RawStepStartTime=1585366155788
+URL1=file:

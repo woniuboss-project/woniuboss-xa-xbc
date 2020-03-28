@@ -1,0 +1,9 @@
+*** Settings ***
+Library           SeleniumLibrary
+
+*** Keywords ***
+等待登录成功页面显示
+    Wait Until Element Is Visible    link:安全退出
+
+检查是否登录成功
+    Element Should Be Visible    link:安全退出    安全退出
