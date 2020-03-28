@@ -1,0 +1,20 @@
+*** Settings ***
+Library           RequestsLibrary
+Resource          login.txt
+
+*** Keywords ***
+新增商品
+    [Arguments]    ${header}    ${url}    ${path}    ${shopId}    ${productId}    ${isServer}
+    ...    ${name}    ${categoryId}    ${inPrice}    ${outPrice}    ${percentage}    ${notice_stocks}
+    ...    ${weight}    ${logo_images}    ${detail_images}    ${production_time}    ${brand_name}    ${version}
+    ...    ${shop_id}
+    登录
+    ${body}    Create Dictionary    shopId=${shopId}    productId=${productId}    isServer=${isServer}    name=${name}    categoryId=${categoryId}
+    ...    inPrice=${inPrice}    outPrice=${outPrice}    percentage=${percentage}    notice_stocks=${notice_stocks}    weight=${weight}    logo_images=${logo_images}
+    ...    detail_images=${detail_images}    production_time=${production_time}    brand_name=${brand_name}    version=${version}    shop_id=${shop_id}
+    ${headers}    Create Dictionary    Content-Type=${header}
+    Create Session    session    ${url}
+    ${resp}    Post Request    session    ${path}    ${body}    headers=${headers}
+    Log    ${resp.json()}
+    Run Keyword If    'error' in '${resp.json}'    Log    SUCCESSFUL
+    ...    ELSE    Log    fail

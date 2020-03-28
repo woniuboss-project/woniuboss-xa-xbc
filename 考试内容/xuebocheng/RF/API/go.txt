@@ -1,0 +1,50 @@
+*** Settings ***
+Resource          do_login.txt
+Library           RequestsLibrary
+Resource          do_sales.txt
+Resource          do_query.txt
+Resource          customer_query.txt
+
+*** Test Cases ***
+login
+    登录参数    13709113328    123698745    null    application/json    https://snailpet.com    /v2/Passport/login
+    登录参数    13709113328    admin    null    application/json    https://snailpet.com    /v2/Passport/login
+    登录参数    admin    123698745    null    application/json    https://snailpet.com    /v2/Passport/login
+
+sale
+    新增商品    application/json    https://snailpet.com    /v2/Product/add    17540    0    0
+    ...    全球    840383    10    29    0    1
+    ...    0    ""    ""    ""    ""    1
+    ...    17540
+    新增商品    application/json    https://snailpet.com    /v2/Product/add    17540    0    0
+    ...    123321    840383    10    ￥%    0    1
+    ...    0    ""    ""    ""    ""    1
+    ...    17540
+    新增商品    application/json    https://snailpet.com    /v2/Product/add    17540    0    0
+    ...    CAT    840383    十    29    0    1
+    ...    0    ""    ""    ""    ""    1
+    ...    17540
+    新增商品    application/json    https://snailpet.com    /v2/Product/add    17540    0    0
+    ...    CAT    ""    十    29    0    1
+    ...    0    ""    ""    ""    ""    1
+    ...    17540
+
+query
+    增加支出    application/json    https://snailpet.com    /v2/Shop/addSpending    1585324800    14    ""
+    ...    200    17540    17540
+    增加支出    application/json    https://snailpet.com    /v2/Shop/addSpending    1585324800    10    ""
+    ...    300    17540    17540
+    增加支出    application/json    https://snailpet.com    /v2/Shop/addSpending    1585324800    @    ""
+    ...    五百    17540    17540
+    增加支出    application/json    https://snailpet.com    /v2/Shop/addSpending    1585324800    @    ""
+    ...    ""    17540    17540
+
+pandian
+    新增盘点    application/json    https://snailpet.com    /v2/shop/stocktaking/save    ""    盘点    17540
+    ...    27357
+    新增盘点    application/json    https://snailpet.com    /v2/shop/stocktaking/save    ""    ""    17540
+    ...    27357
+    新增盘点    application/json    https://snailpet.com    /v2/shop/stocktaking/save    ""    ASD    17540
+    ...    27357
+    新增盘点    application/json    https://snailpet.com    /v2/shop/stocktaking/save    ""    12345689    17540
+    ...    27357

@@ -1,0 +1,17 @@
+*** Settings ***
+Library           RequestsLibrary
+Resource          login.txt
+
+*** Keywords ***
+增加支出
+    [Arguments]    ${header}    ${url}    ${path}    ${actionTime}    ${type}    ${mark}
+    ...    ${amount}    ${shopId}    ${shop_id}
+    登录
+    ${body}    Create Dictionary    actionTime=${actionTime}    type=${type}    mark=${mark}    amount=${amount}    shopId=${shopId}
+    ...    shop_id=${shop_id}
+    ${headers}    Create Dictionary    Content-Type=${header}
+    Create Session    session    ${url}
+    ${resp}    Post Request    session    ${path}    ${body}    headers=${headers}
+    Log    ${resp.json()}
+    Run Keyword If    'error' in '${resp.json}'    Log    SUCCESSFUL
+    ...    ELSE    Log    fail

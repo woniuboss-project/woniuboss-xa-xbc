@@ -1,0 +1,15 @@
+*** Settings ***
+Library           RequestsLibrary
+
+*** Keywords ***
+登录参数
+    [Arguments]    ${phone}    ${password}    ${null}    ${header}    ${url}    ${path}
+    ${data}    Create Dictionary    phone=${phone}    password=${password}    shop_id=${null}
+    ${headers}    Create Dictionary    Content-Type=${header}
+    Create Session    session    ${url}
+    ${resp}    Post Request    session    ${path}    ${data}    headers=${headers}
+    Log    ${resp.json()}
+    Run Keyword If    'error' in '${resp.json}'    Log    successful
+    ...    ELSE    Log    fail
+    [Teardown]
+    [Return]    ${resp.text}
