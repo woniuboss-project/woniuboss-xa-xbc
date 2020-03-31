@@ -99,20 +99,22 @@ class Utility:
             li.append(tup)
         return li
 
-    # 从某个路径读取文件
+    # 从某个路径读取文本文件内容
     @classmethod
     def get_txt(cls, path):
         with open(path, encoding='utf8') as file:
             return file.readlines()
-    #  处理换行信息
+
+    # 将包含换行的列表转化为不包含换行的列表
     @classmethod
     def trans_str(cls, path):
         contents = cls.get_txt(path)
         li = []
         for content in contents:
-            content_new = content.strip('\n')
-            li.append(content_new)
+            if not content.startswith('#'):
+                li.append(content.strip())
         return li
+
 
 if __name__ == '__main__':
     a=Utility.get_json("..\\config\\testdata.conf")

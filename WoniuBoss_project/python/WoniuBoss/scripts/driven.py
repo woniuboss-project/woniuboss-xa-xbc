@@ -1,11 +1,10 @@
 import unittest
-
+from WoniuBoss.tools.utility import Utility
+from HTMLTestRunner import HTMLTestRunner
 class Driven:
     def start(self):
-        from HTMLTestRunner import HTMLTestRunner
         ts=unittest.TestSuite()
         loader=unittest.TestLoader()
-        from woniusales3.until.utility import Utility
         testcase_names=Utility.trans_str('..\\config\\test.conf')
         # print(testcase_names)
         tests=loader.loadTestsFromNames(testcase_names)

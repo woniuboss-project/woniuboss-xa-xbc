@@ -12,6 +12,8 @@ Waste_resources_info=Utility.get_excel_to_tuple(train_data[5])
 transfer_query_info=Utility.get_excel_to_tuple(train_data[6])
 transfer_view_info=Utility.get_excel_to_tuple(train_data[7])
 transfer_commit_info=Utility.get_excel_to_tuple(train_data[8])
+distribution_query_info=Utility.get_excel_to_tuple(train_data[9])
+Proportionate_distribution_info=Utility.get_excel_to_tuple(train_data[10])
 Public_query_info=Utility.get_excel_to_tuple(train_data[11])
 Public_claim_info=Utility.get_excel_to_tuple(train_data[12])
 class test_train(unittest.TestCase):
@@ -40,7 +42,7 @@ class test_train(unittest.TestCase):
         Track_resources_data=DATA
         resp=self.train.Track_resources(Track_resources_url,Track_resources_data)
         #断言
-        self.assertEqual(resp,CONTENT)
+        self.assertEqual(resp.text,CONTENT)
 
     @parameterized.expand(Modify_information_info)
     def test_Modify_information(self, URL, DATA, CONTENT):
@@ -88,7 +90,23 @@ class test_train(unittest.TestCase):
         transfer_commit_data=DATA
         resp=self.train.transfer_commit(transfer_commit_url,transfer_commit_data)
         #断言
-        self.assertEqual(resp,CONTENT)
+        self.assertEqual(resp.text,CONTENT)
+
+    @parameterized.expand(distribution_query_info)
+    def test_distribution_query(self, URL, DATA, CONTENT):
+        distribution_query_url = URL
+        distribution_query_data = DATA
+        resp = self.train.distribution_query(distribution_query_url, distribution_query_data)
+        # 断言
+        self.assertEqual(resp.json(), CONTENT)
+
+    @parameterized.expand(Proportionate_distribution_info)
+    def test_Proportionate_distribution(self, URL, DATA, CONTENT):
+        Proportionate_distribution_url = URL
+        Proportionate_distribution_data = DATA
+        resp = self.train.Proportionate_distribution(Proportionate_distribution_url, Proportionate_distribution_data)
+        # 断言
+        self.assertEqual(resp.json(), CONTENT)
 
     @parameterized.expand(Public_query_info)
     def test_Public_query(self, URL, DATA, CONTENT):
@@ -104,7 +122,7 @@ class test_train(unittest.TestCase):
         Public_claim_data=DATA
         resp=self.train.Public_claim(Public_claim_url,Public_claim_data)
         #断言
-        self.assertEqual(resp,CONTENT)
+        self.assertEqual(resp.text,CONTENT)
 
 
 if __name__ == '__main__':
