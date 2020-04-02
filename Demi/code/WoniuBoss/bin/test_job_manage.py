@@ -1,0 +1,83 @@
+from WoniuBoss.tools.utility import Utility
+from WoniuBoss.lib.job_manage import JobManage
+import unittest
+from parameterized import parameterized
+
+# 获取测试数据
+job_manage_datas = Utility.get_json('..\\config\\testdata.conf')
+# 就业面试通过
+job_manage_pass_datas = Utility.get_excel_to_tuple_url(job_manage_datas[13])
+# 就业管理提交
+job_manage_commit_datas = Utility.get_excel_to_tuple_url(job_manage_datas[14])
+# 查询资源
+job_manage_query_datas = Utility.get_excel_to_tuple(job_manage_datas[15])
+# 真实面试
+job_manage_interview_datas = Utility.get_excel_to_tuple(job_manage_datas[16])
+# 入职情况
+job_manage_status_datas = Utility.get_excel_to_tuple(job_manage_datas[17])
+
+
+class TestJobManage(unittest.TestCase):
+
+    def setUp(self):
+        print("test start")
+
+    def tearDown(self):
+        print("test over")
+
+    # 就业面试通过
+    @parameterized.expand(job_manage_pass_datas)
+    def test_job_manage_pass(self, job_manage_pass_url, expect):
+        job_manage_pass_resp = JobManage().creat_pass(job_manage_pass_url)
+        # 断言
+        if job_manage_pass_resp == expect:
+            print("job manage pass test success")
+        else:
+            print("job manage pass test fail")
+
+    # 就业管理提交
+    @parameterized.expand(job_manage_commit_datas)
+    def test_job_manage_commit(self, job_manage_commit_url, expect):
+        job_manage_commit_resp = JobManage().creat_commit(job_manage_commit_url)
+        # 断言
+        if job_manage_commit_resp == expect:
+            print("job manage commit test success")
+        else:
+            print("jjob manage commit test fail")
+
+    # 查询资源
+    @parameterized.expand(job_manage_query_datas)
+    def test_job_manage_tech_query(self, job_manage_query_url, job_manage_query_data, expect):
+        job_manage_query_resp = JobManage().creat_query(job_manage_query_url,
+                                                        job_manage_query_data)
+        # 断言
+        if job_manage_query_resp == expect:
+            print("job manage query test success")
+        else:
+            print("job manage query test fail")
+
+    # 真实面试
+    @parameterized.expand(job_manage_interview_datas)
+    def test_job_manage_tech_query(self, job_manage_interview_url, job_manage_interview_data, expect):
+        job_manage_interview_resp = JobManage().creat_interview(job_manage_interview_url,
+                                                                job_manage_interview_data)
+        # 断言
+        if job_manage_interview_resp == expect:
+            print("job manage interview test success")
+        else:
+            print("job manage interview test fail")
+
+    # 真实面试
+    @parameterized.expand(job_manage_status_datas)
+    def test_job_manage_tech_query(self, job_manage_status_url, job_manage_status_data, expect):
+        job_manage_status_resp = JobManage().creat_interview(job_manage_status_url,
+                                                             job_manage_status_data)
+        # 断言
+        if job_manage_status_resp == expect:
+            print("job manage status test success")
+        else:
+            print("job manage status test fail")
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

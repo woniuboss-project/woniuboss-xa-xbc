@@ -65,11 +65,37 @@ class Utility:
         # print(test_info)
         return test_info
 
+    @classmethod
+    def get_excel_port_dict_url(cls, xls_file_info):
+        import xlrd
+        workbook = xlrd.open_workbook(xls_file_info['DATAPATH'])
+        contents = workbook.sheet_by_name(xls_file_info['SHEETNAME'])
+        test_info = []
+        # 按行读取每一条测试信息
+        for i in range(xls_file_info['STARTROW'], xls_file_info['ENDROW']):
+            # 读取单元格中的内容
+            url = contents.cell(i, xls_file_info['URLCOL']).value
+            # 字典的测试数据
+            resp_content = contents.cell(i, xls_file_info['CONTENTCOL']).value
+            info = {'URL': url, 'CONTENT': resp_content}
+            test_info.append(info)
+        # print(test_info)
+        return test_info
+
     # 接口方式
     # 把test_info数据转换成[(),(),()]
     @classmethod
     def get_excel_to_tuple(cls, xls_file_info):
         result = cls.get_excel_port_dict(xls_file_info)
+        li = []
+        for di in result:
+            tup = tuple(di.values())
+            li.append(tup)
+        return li
+
+    @classmethod
+    def get_excel_to_tuple_url(cls, xls_file_info):
+        result = cls.get_excel_port_dict_url(xls_file_info)
         li = []
         for di in result:
             tup = tuple(di.values())
