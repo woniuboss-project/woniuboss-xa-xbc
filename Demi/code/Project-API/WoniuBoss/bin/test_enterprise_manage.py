@@ -25,31 +25,25 @@ class TestEnterPrise(unittest.TestCase):
     @parameterized.expand(enterprise_manage_add_datas)
     def test_enterprise_manage_add(self, enterprise_manage_add_url, expect):
         enterprise_manage_add_resp = EnterpriseManage().enterprise_add(enterprise_manage_add_url)
+        actual = enterprise_manage_add_resp
         # 断言
-        if enterprise_manage_add_resp == expect:
-            print("enterprise manage add test success")
-        else:
-            print("enterprise manage add test fail")
+        self.assertEqual(actual, expect)
 
     # 修改资源
     @parameterized.expand(enterprise_manage_update_datas)
     def test_enterprise_manage_update(self, enterprise_manage_update_url, expect):
         enterprise_manage_update_resp = EnterpriseManage().enterprise_update(enterprise_manage_update_url)
+        actual = enterprise_manage_update_resp
         # 断言
-        if enterprise_manage_update_resp == expect:
-            print("enterprise manage update test success")
-        else:
-            print("enterprise manage update test fail")
+        self.assertEqual(actual, expect)
 
     # 查询资源
     @parameterized.expand(enterprise_manage_query_datas)
     def test_enterprise_manage_query(self, enterprise_manage_query_url, expect):
         enterprise_manage_query_resp = EnterpriseManage().enterprise_query(enterprise_manage_query_url)
+        actual = enterprise_manage_query_resp
         # 断言
-        if enterprise_manage_query_resp == expect:
-            print("enterprise manage query test success")
-        else:
-            print("enterprise manage query test fail")
+        self.assertEqual(actual, expect)
 
 
 if __name__ == '__main__':

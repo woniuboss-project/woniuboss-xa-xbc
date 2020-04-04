@@ -27,41 +27,33 @@ class TestReportCenter(unittest.TestCase):
     @parameterized.expand(console_datas)
     def test_console_report(self, console_url, console_data, console_expect):
         console_report_resp = ReportCenter().console_report(console_url, console_data)
+        actual = console_report_resp
         # 断言
-        if console_report_resp == console_expect:
-            print("console report test successful")
-        else:
-            print("console report test fail")
+        self.assertEqual(actual, console_expect)
 
     # 电销部报表中心功能测试
     @parameterized.expand(sale_datas)
     def test_sale_report(self, sale_url, sale_data, sale_expect):
         sale_report_resp = ReportCenter().console_report(sale_url, sale_data)
+        actual = sale_report_resp
         # 断言
-        if sale_report_resp == sale_expect:
-            print("sale report test successful")
-        else:
-            print("sale report test fail")
+        self.assertEqual(actual, sale_expect)
 
     # 市场部报表中心功能测试
     @parameterized.expand(mark_datas)
     def test_sale_report(self, mark_url, mark_data, mark_expect):
         mark_report_resp = ReportCenter().console_report(mark_url, mark_data)
+        actual = mark_report_resp
         # 断言
-        if mark_report_resp == mark_expect:
-            print("mark report test successful")
-        else:
-            print("mark report test fail")
+        self.assertEqual(actual, mark_expect)
 
     # 市场部报表中心功能测试
     @parameterized.expand(job_datas)
     def test_sale_report(self, job_url, job_data, job_expect):
         job_report_resp = ReportCenter().console_report(job_url, job_data)
+        actual = job_report_resp
         # 断言
-        if job_report_resp == job_expect:
-            print("job report test successful")
-        else:
-            print("job report test fail")
+        self.assertEqual(actual, job_expect)
 
 
 if __name__ == '__main__':

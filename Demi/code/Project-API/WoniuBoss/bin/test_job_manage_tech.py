@@ -25,32 +25,26 @@ class TestJobManageTech(unittest.TestCase):
     @parameterized.expand(job_manage_tech_pass_datas)
     def test_job_manage_tech_pass(self, job_manage_tech_pass_url, expect):
         job_manage_tech_pass_resp = JobManageTech().job_pass(job_manage_tech_pass_url)
+        actual = job_manage_tech_pass_resp
         # 断言
-        if job_manage_tech_pass_resp == expect:
-            print("job manage tech test success")
-        else:
-            print("job manage tech test fail")
+        self.assertEqual(actual, expect)
 
     # 技术面试不通过
     @parameterized.expand(job_manage_tech_unpass_datas)
     def test_job_manage_tech_unpass(self, job_manage_tech_unpass_url, expect):
         job_manage_tech_unpass_resp = JobManageTech().job_pass(job_manage_tech_unpass_url)
+        actual = job_manage_tech_unpass_resp
         # 断言
-        if job_manage_tech_unpass_resp == expect:
-            print("job manage tech test success")
-        else:
-            print("job manage tech test fail")
+        self.assertEqual(actual, expect)
 
     # 查询资源
     @parameterized.expand(job_manage_tech_query_datas)
     def test_job_manage_tech_query(self, job_manage_tech_query_url, job_manage_tech_query_data, expect):
         job_manage_tech_query_resp = JobManageTech().job_query(job_manage_tech_query_url,
                                                                job_manage_tech_query_data)
+        actual = job_manage_tech_query_resp
         # 断言
-        if job_manage_tech_query_resp == expect:
-            print("job manage query test success")
-        else:
-            print("job manage query test fail")
+        self.assertEqual(actual, expect)
 
 
 if __name__ == '__main__':

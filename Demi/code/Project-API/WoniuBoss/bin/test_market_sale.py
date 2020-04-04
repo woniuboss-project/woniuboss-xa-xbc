@@ -25,31 +25,25 @@ class TestMarketSale(unittest.TestCase):
     @parameterized.expand(market_add_datas)
     def test_market_add(self, market_add_url, market_add_data, expect):
         market_add_resp = MarketPort().market_add(market_add_url, market_add_data)
+        actual = market_add_resp
         # 断言
-        if market_add_resp == expect:
-            print("market add test success")
-        else:
-            print("market add test fail")
+        self.assertEqual(actual, expect)
 
     # 上传简历
     @parameterized.expand(market_upload_datas)
     def test_market_add(self, market_upload_url, market_upload_data, expect):
         market_upload_resp = MarketPort().market_add(market_upload_url, market_upload_data)
+        actual = market_upload_resp
         # 断言
-        if market_upload_resp == expect:
-            print("market upload test success")
-        else:
-            print("market upload test fail")
+        self.assertEqual(actual, expect)
 
     # 查询资源
     @parameterized.expand(market_query_datas)
     def test_market_add(self, market_query_url, market_query_data, expect):
         market_query_resp = MarketPort().market_add(market_query_url, market_query_data)
+        actual = market_query_resp
         # 断言
-        if market_query_resp == expect:
-            print("market query test success")
-        else:
-            print("market query test fail")
+        self.assertEqual(actual, expect)
 
 
 if __name__ == '__main__':
