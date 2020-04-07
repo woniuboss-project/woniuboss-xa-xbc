@@ -8,8 +8,7 @@ class Utility:
         with open(path) as file:
             cotents = json.load(file)
         return cotents
-        
-    # GUI方式
+
     # 从excel中读取内容为[{},{},{}]
     @classmethod
     def get_excel_to_json(clS, file_info):
@@ -40,7 +39,19 @@ class Utility:
             li.append(tup)
         return li
 
-    # API方式
+
+
+    # 生成driver
+    @classmethod
+    def get_driver(cls, path):
+        contents = Utility.get_json(path)
+        from selenium import webdriver
+        driver = getattr(webdriver, contents['BROWSER'])()
+        driver.implicitly_wait(10)
+        driver.maximize_window()
+        return driver
+    
+    #接口
     # 从excel中读取内容，读取结果为[{},{},{}]
     @classmethod
     def get_excel_port_dict(cls,xls_file_info):
@@ -65,20 +76,19 @@ class Utility:
             test_info.append(info)
         print(test_info)
         return test_info
-    
-    # API方式
-    # 从excel中读取内容，读取结果为[(),(),()]
+
+    #读取账号信息
     @classmethod
-    def get_excel_to_tuple(cls, xls_file_info):
-        result = cls.get_excel_port_dict(xls_file_info)
+    def get_tuple(cls,path):
+        result = cls.get_json(path)
+        # print(result)
         li = []
-        for di in result:
-            # 通过tuple(dict.vlues())将值集转化为元组
-            tup = tuple(di.values())
+        for i in result:
+            tup = tuple(i.values())
             li.append(tup)
         return li
-
-    # API只传get方式
+    
+    # 只传get
     @classmethod
     def get_excel_port_dict_url(cls, xls_file_info):
         import xlrd
@@ -95,8 +105,7 @@ class Utility:
             test_info.append(info)
         # print(test_info)
         return test_info
-    
-    # API只传get方式
+
     @classmethod
     def get_excel_to_tuple_url(cls, xls_file_info):
         result = cls.get_excel_port_dict_url(xls_file_info)
@@ -105,7 +114,17 @@ class Utility:
             tup = tuple(di.values())
             li.append(tup)
         return li
-    
+    # 从excel中读取内容，读取结果为[(),(),()]
+    @classmethod
+    def get_excel_to_tuple(cls, xls_file_info):
+        result = cls.get_excel_port_dict(xls_file_info)
+        li = []
+        for di in result:
+            # 通过tuple(dict.vlues())将值集转化为元组
+            tup = tuple(di.values())
+            li.append(tup)
+        return li
+
     # 从某个路径读取文本文件内容
     @classmethod
     def get_txt(cls, path):
@@ -122,17 +141,6 @@ class Utility:
                 li.append(content.strip())
         return li
 
-    #读取账号信息
-    @classmethod
-    def get_tuple(cls,path):
-        result = cls.get_json(path)
-        # print(result)
-        li = []
-        for i in result:
-            tup = tuple(i.values())
-            li.append(tup)
-        return li
-    
 
 if __name__ == '__main__':
     a=Utility.get_json("..\\config\\testdata.conf")
