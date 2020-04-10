@@ -130,10 +130,38 @@ class Utility:
         li = []
         for i in result:
             tup = tuple(i.values())
-            li.append(tup)
+            li.append(tup)S
         return li
     
+    # 获取数据库连接
+    @classmethod
+    def getConn(cls, path):
+        import pymysql
+        db_info = cls.get_json(path)
+        return pymysql.connect(db_info['HOSTNAME'], db_info['DBUSER'], db_info['DBPASSWORD'], db_info['DBNAME'],
+                               charset='utf8')
 
+    # 查询一条记录
+    @classmethod
+    def query_one(cls, path, sql):
+        conn = cls.getConn(path)S
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return result
+
+    # 查询多条记录
+    @classmethod
+    def query_all(cls, path, sql):
+        conn = cls.getConn(path)
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return result
 if __name__ == '__main__':
     a=Utility.get_json("..\\config\\testdata.conf")
     b=Utility.get_excel_GUI_tuple(a[0])

@@ -57,14 +57,16 @@ class Service:
 
     # 具体的业务功能需要绕过登录，使用cookie
     @classmethod
-    def miss_login(cls, driver, base_config_path):
+     def miss_login(cls, driver, base_config_path):
         cls.open_page(driver, base_config_path)
         # 通过字典方式传递cookie信息
         contents = Utility.get_json(base_config_path)
         driver.add_cookie({'name': 'username', 'value': contents['username']})
         driver.add_cookie({'name': 'password', 'value': contents['password']})
+        driver.add_cookie({'name': 'token', 'value': contents['token']})
+        driver.add_cookie({'name': 'workId', 'value': contents['workId']})
+        time.sleep(2)
         cls.open_page(driver, base_config_path)
-
     # 截图.仅进行截图操作
     @classmethod
     def get_png(cls,driver,png_path):
@@ -77,7 +79,8 @@ class Service:
         ctime = time.strftime('%Y-%m-%d_%H-%M-%S', time.localtime())
         png_path = '..\\bugpng\\error_%s.png'%(ctime)
         cls.get_png(driver,png_path)
-
+    
+    # 获取session
     @classmethod
     def get_session(cls,sum):
         base_info = Utility.get_json('..\\config\\base.conf')
@@ -90,6 +93,15 @@ class Service:
         resp=session.post(login_url, login_data)
         print(resp.text)
         return session
+        
+    # 弹窗处理
+    @classmethod
+    def alert_windows(self, driver):
+        # 从页面切换至windows弹出窗口
+        text = driver.switch_to.alert.text
+        # 确定
+        driver.switch_to.alert.accept()
+        time.sleep(1)
 
 if __name__ == '__main__':
     # a=Service.get_driver("..\\config\\base.conf")
