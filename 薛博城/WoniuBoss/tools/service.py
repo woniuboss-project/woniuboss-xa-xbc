@@ -65,6 +65,7 @@ class Service:
         driver.add_cookie({'name': 'userPass', 'value': contents['userPass']})
         driver.add_cookie({'name':'token','value':contents['token']})
         driver.add_cookie({'name':'workId','value':contents['workId']})
+        driver.add_cookie({'name':'rememberMe','value':contents['rememberMe']})
         cls.open_page(driver, base_config_path)
 
     # 截图.仅进行截图操作

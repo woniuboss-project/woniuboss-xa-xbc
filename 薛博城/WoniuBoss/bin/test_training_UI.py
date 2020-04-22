@@ -49,6 +49,7 @@ class Training(unittest.TestCase):
     #新增
     @parameterized.expand(query_add)
     def test_add(self,password,phone,name,condition,SOURCE,expect):
+
         add_data={'passwd': password, 'phone': phone, 'name': name, 'condition': condition, 'SOURCE': SOURCE}
         #查询新增之前的总数
         sql = f'select count(customer_id) from customer'
@@ -64,17 +65,21 @@ class Training(unittest.TestCase):
     #修改
     @parameterized.expand(query_edit)
     def test_edit(self,password,name,phone,intention,workage,expect):
-        edit_data={'passwd': password, 'name': name, 'phone': phone, 'intention': intention,'workage':workage}
-        sql = f'select count(customer_id) from customer'
-        result = Utility.query_one('..\\config\\base_UI.conf', sql)
-        self.train.edit_customer('..\\config\\base_UI.conf',edit_data)
-        new_result = Utility.query_one('..\\config\\base_UI.conf', sql)
-        resp=self.driver.find_element_by_css_selector('#personal-table > tbody:nth-child(2)')
-        if new_result[0] - result[0] != 1 and name in resp.text:
-            actual='success'
-        else:
-            actual='fail'
-        self.assertEqual(actual,expect)
+        try:
+            edit_data={'passwd': password, 'name': name, 'phone': phone, 'intention': intention,'workage':workage}
+            sql = f'select count(customer_id) from customer'
+            result = Utility.query_one('..\\config\\base_UI.conf', sql)
+            self.train.edit_customer('..\\config\\base_UI.conf',edit_data)
+            new_result = Utility.query_one('..\\config\\base_UI.conf', sql)
+            resp=self.driver.find_element_by_css_selector('#personal-table > tbody:nth-child(2)')
+            if new_result[0] - result[0] != 1 and name in resp.text:
+                actual='success'
+            else:
+                actual='fail'
+            self.assertEqual(actual,expect)
+        except Exception as e:
+            actual = 'fail'
+            self.assertEqual(actual, expect)
 
     #跟踪
     @parameterized.expand(query_tail)
@@ -94,14 +99,18 @@ class Training(unittest.TestCase):
 
     @parameterized.expand(query_delt)
     def test_delt(self,password,pool,num,pool_1,expect):
-        tail_data = {'passwd': password,'pool':pool,'num':int(num),'pool_1':pool_1}
-        self.train.do_delt('..\\config\\base_UI.conf',tail_data)
-        resp=self.driver.find_element_by_class_name('pagination-info')
-        if '0' not in resp.text:
-            actual='success'
-        else:
-            actual='fail'
-        self.assertEqual(actual,expect)
+        try:
+            tail_data = {'passwd': password,'pool':pool,'num':int(num),'pool_1':pool_1}
+            self.train.do_delt('..\\config\\base_UI.conf',tail_data)
+            resp=self.driver.find_element_by_class_name('pagination-info')
+            if '0' not in resp.text:
+                actual='success'
+            else:
+                actual='fail'
+            self.assertEqual(actual,expect)
+        except Exception as e:
+            actual = 'fail'
+            self.assertEqual(actual, expect)
 
     #转交责任人提交
     @parameterized.expand(query_deliver)
@@ -112,7 +121,7 @@ class Training(unittest.TestCase):
             result = Utility.query_one('..\\config\\base_UI.conf', sql)
             self.train.do_submit('..\\config\\base_UI.conf',deliver_data)
             new_result = Utility.query_one('..\\config\\base_UI.conf', sql)
-            if result[0] - new_result[0] !=1:
+            if new_result[0] - result[0] !=1:
                 actual='success'
             else:
                 actual='fail'
@@ -159,7 +168,7 @@ class Training(unittest.TestCase):
             self.train.resource_submit('..\\config\\base_UI.conf',res_data)
             resp=self.driver.find_element_by_id('allot-table')
             new_result = Utility.query_one('..\\config\\base_UI.conf', sql)
-            if ucus not in resp.text and result[0]-new_result[0]!=1:
+            if ucus not in resp.text and new_result[0]-result[0]!=1:
                 actual='success'
             else:
                 actual='fail'
