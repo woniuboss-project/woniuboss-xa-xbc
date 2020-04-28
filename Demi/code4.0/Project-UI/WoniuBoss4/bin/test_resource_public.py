@@ -28,32 +28,41 @@ class TestResourceTrain(unittest.TestCase):
 
     def test_resource_public_query_one(self):
         self.public.public_resource_query_one()
-        if "成都" in WebDriverWait(self.driver, 10, 1).until(
-                lambda dr: dr.find_element(By.XPATH, '//table[@id="public-pool-table"]/tbody/tr[1]/td[2]').text):
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if "成都" in WebDriverWait(self.driver, 10, 1).until(
+                    lambda dr: dr.find_element(By.XPATH, '//table[@id="public-pool-table"]/tbody/tr[1]/td[2]').text):
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     @parameterized.expand(resource_public_query)
     def test_resource_public_query_two(self, name):
         self.public.public_resource_query_two(name)
-        if "%s" % name in WebDriverWait(self.driver, 10, 1).until(
-                lambda dr: dr.find_element(By.XPATH, '//table[@id="public-pool-table"]/tbody/tr[1]/td[2]').text):
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if "%s" % name in WebDriverWait(self.driver, 10, 1).until(
+                    lambda dr: dr.find_element(By.XPATH, '//table[@id="public-pool-table"]/tbody/tr[1]/td[2]').text):
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_resource_claim(self):
         self.public.claim_resource()
-        if '已成功认领1份资源，系统已将这些资源加入到您的临时池中' in \
-                WebDriverWait(self.driver, 10, 1).until \
-                            (lambda dr: dr.find_element \
-                                    (By.CSS_SELECTOR,
-                                     'html body.modal-open div.bootbox.modal.fade.mydialog.in div.modal-dialog.modal-sm') \
-                                .text):
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if '已成功认领1份资源，系统已将这些资源加入到您的临时池中' in \
+                    WebDriverWait(self.driver, 10, 1).until \
+                                (lambda dr: dr.find_element \
+                                        (By.CSS_SELECTOR,
+                                         'html body.modal-open div.bootbox.modal.fade.mydialog.in div.modal-dialog.modal-sm') \
+                                    .text):
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception

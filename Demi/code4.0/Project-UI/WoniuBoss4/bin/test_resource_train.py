@@ -33,13 +33,16 @@ class TestResourceTrain(unittest.TestCase):
     def test_resource_train_add(self, tel, name, expect):
         self.train.excute_add_train_resource(tel, name)
         length = len(self.driver.find_element_by_id('personal-table'))
-        for i in range(1, length):
-            if self.driver.find_element_by_xpath(f'//table[@id="personal-table"]/tobody/tr{i}/td[2]').text == '嘻嘻':
-                actual = 'add-pass'
-            else:
-                actual = 'add-fail'
-            # 断言
-            self.assertEqual(actual, expect)
+        try:
+            for i in range(1, length):
+                if self.driver.find_element_by_xpath(f'//table[@id="personal-table"]/tobody/tr{i}/td[2]').text == '嘻嘻':
+                    actual = 'add-pass'
+                else:
+                    actual = 'add-fail'
+                # 断言
+                self.assertEqual(actual, expect)
+        except Exception:
+            raise
 
     # 废弃资源
     def test_resource_train_abandon(self):
@@ -48,88 +51,115 @@ class TestResourceTrain(unittest.TestCase):
         self.train.excute_abandon_button()
         sql_two = 'select count(abandon_record_id) from abandon_record'
         result_two = Utility.query_one('../config/base.conf', sql_two)
-        if result_two[0] - result_one[0] > 0:
-            actual = 'abandon-pass'
-        else:
-            actual = 'abandon-fail'
-        self.assertEqual(actual, 'abandon-pass')
+        try:
+            if result_two[0] - result_one[0] > 0:
+                actual = 'abandon-pass'
+            else:
+                actual = 'abandon-fail'
+            self.assertEqual(actual, 'abandon-pass')
+        except Exception:
+            raise Exception
 
     # 跟踪资源
     @parameterized.expand(resoure_train_tail)
     def test_resource_train_tail(self, content):
         self.train.excute_tail(content)
-        if self.driver.find_element_by_xpath('//table[@id="personal-table"]/tbody/tr[1]/td[14]/span').text == 'ok':
-            actual = 'tail-pass'
-        else:
-            actual = 'tail-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if self.driver.find_element_by_xpath('//table[@id="personal-table"]/tbody/tr[1]/td[14]/span').text == 'ok':
+                actual = 'tail-pass'
+            else:
+                actual = 'tail-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     # 修改资源
     @parameterized.expand(resoure_train_edit)
     def test_resource_train_edit(self, name, tel, expect):
         self.train.excute_edit(name, tel)
         length = len(self.driver.find_element_by_id('personal-table'))
-        for i in range(1, length):
-            if self.driver.find_element_by_xpath(f'//table[@id="personal-table"]/tobody/tr{i}/td[2]').text == '妮妮':
-                actual = 'add-pass'
-            else:
-                actual = 'add-fail'
-            # 断言
-            self.assertEqual(actual, expect)
+        try:
+            for i in range(1, length):
+                if self.driver.find_element_by_xpath(f'//table[@id="personal-table"]/tobody/tr{i}/td[2]').text == '妮妮':
+                    actual = 'add-pass'
+                else:
+                    actual = 'add-fail'
+                # 断言
+                self.assertEqual(actual, expect)
+        except Exception:
+            raise Exception
 
     # 搜索资源
     def test_resource_train_equery_one(self):
         self.train.select_query_resource()
-        if len(self.driver.find_element_by_id('personal-table')) > 1:
-            actual = 'query-pass'
-        elif self.driver.find_element_by_xpath(
-                '/html/body/div[15]/div/div/div[2]/div').text == '该页面不展示公共池资源，若需查看，可至公共资源模块查看详情':
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if len(self.driver.find_element_by_id('personal-table')) > 1:
+                actual = 'query-pass'
+            elif self.driver.find_element_by_xpath(
+                    '/html/body/div[15]/div/div/div[2]/div').text == '该页面不展示公共池资源，若需查看，可至公共资源模块查看详情':
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_resource_train_equery_two(self):
         self.train.selector_query_status()
-        if len(self.driver.find_element_by_id('personal-table')) > 1:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if len(self.driver.find_element_by_id('personal-table')) > 1:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_resource_train_equery_three(self):
         self.train.selector_query_source()
-        if len(self.driver.find_element_by_id('personal-table')) > 1:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if len(self.driver.find_element_by_id('personal-table')) > 1:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     @parameterized.expand(resoure_train_query_one)
     def test_resource_train_equery_four(self, s_time, e_time):
         self.train.input_query_date(s_time, e_time)
-        if len(self.driver.find_element_by_id('personal-table')) > 1:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if len(self.driver.find_element_by_id('personal-table')) > 1:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     @parameterized.expand(resoure_train_query_two)
     def test_resource_train_equery_five(self, data):
         self.train.input_query_information(data)
-        if len(self.driver.find_element_by_id('personal-table')) > 1:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if len(self.driver.find_element_by_id('personal-table')) > 1:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_resource_train_equery_six(self):
         self.train.selector_query_combination()
-        if self.driver.find_element_by_xpath('//tale[@id="personal-table"]/tbody/tr[1]/td[2]').text == '力力':
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if self.driver.find_element_by_xpath('//tale[@id="personal-table"]/tbody/tr[1]/td[2]').text == '力力':
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
 
 if __name__ == '__main__':

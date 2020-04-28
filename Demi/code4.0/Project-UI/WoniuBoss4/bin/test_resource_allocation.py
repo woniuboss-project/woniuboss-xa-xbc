@@ -28,49 +28,64 @@ class TestResourceTrain(unittest.TestCase):
         self.allocation.allocation_query_one()
         sql = 'select count(work_id) from customer'
         result = Utility.query_one('../config/base.conf', sql)
-        if result[0] == 8:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if result[0] == 8:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_alloacation_query_two(self):
         self.allocation.allocation_query_two()
         sql = 'select count(source) from customer where work_id="0"'
         result = Utility.query_one('../config/base.conf', sql)
-        if result[0] == 8:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if result[0] == 8:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     @parameterized.expand(resource_allocation_query)
     def test_alloacation_query_three(self, name):
         self.allocation.allocation_query_three(name)
         sql = 'select count(*) from customer where name="%s"' % name
         result = Utility.query_one('../config/base.conf', sql)
-        if result[0] == 1:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if result[0] == 1:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_alloacation_commit_one(self, ):
         self.allocation.excute_manual_commit()
         sql = 'select work_id from customer where name="ww"'
         result = Utility.query_one('../config/base.conf', sql)
-        if result[0] != 0:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if result[0] != 0:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
 
     def test_alloacation_commit_two(self):
         self.allocation.excute_ratio_commit()
         sql = 'select work_id from customer'
         result = Utility.query_one('../config/base.conf', sql)
-        if 0 not in result:
-            actual = 'query-pass'
-        else:
-            actual = 'query-fail'
-        self.assertEqual(actual, 'query-pass')
+        try:
+            if 0 not in result:
+                actual = 'query-pass'
+            else:
+                actual = 'query-fail'
+            self.assertEqual(actual, 'query-pass')
+        except Exception:
+            raise Exception
