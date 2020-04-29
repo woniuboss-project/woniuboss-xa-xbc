@@ -29,7 +29,7 @@ class ResourceTurn:
         Select(selector_three).select_by_index(1)
         time.sleep(2)
         selector_four = self.driver.find_element_by_name('last_status')
-        Select(selector_four).select_by_index(1)
+        Select(selector_four).select_by_index(6)
         time.sleep(2)
         selector_four = self.driver.find_element_by_name('source')
         Select(selector_four).select_by_index(11)
