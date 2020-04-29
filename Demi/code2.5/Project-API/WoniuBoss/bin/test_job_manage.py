@@ -4,7 +4,7 @@ import unittest
 from parameterized import parameterized
 
 # 获取测试数据
-job_manage_datas = Utility.get_json('..\\config\\testdata.conf')
+job_manage_datas = Utility.get_json('..\\config\\testdata_deng.conf')
 # 就业面试通过
 job_manage_pass_datas = Utility.get_excel_to_tuple_url(job_manage_datas[13])
 # 就业管理提交
