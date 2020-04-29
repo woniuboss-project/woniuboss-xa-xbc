@@ -12,7 +12,7 @@ resource_public_datas = Utility.get_json("../config/testdata.conf")
 resource_public_query = Utility.get_excel_GUI_tuple(resource_public_datas[7])
 
 
-class TestResourceTrain(unittest.TestCase):
+class TestRePublic(unittest.TestCase):
 
     def setUp(self):
         print('test start')
