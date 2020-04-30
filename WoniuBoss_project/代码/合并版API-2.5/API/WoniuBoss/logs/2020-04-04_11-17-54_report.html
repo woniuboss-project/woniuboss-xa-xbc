@@ -1,0 +1,2300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Unit Test Report</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Unit Test Report</h1>
+<p class='attribute'><strong>Start Time:</strong> 2020-04-04 11:17:54</p>
+<p class='attribute'><strong>Duration:</strong> 0:01:03.967427</p>
+<p class='attribute'><strong>Status:</strong> Pass 24 Failure 37</p>
+
+<p class='description'></p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss.bin.test_report_center.TestReportCenter</td>
+    <td>33</td>
+    <td>20</td>
+    <td>13</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',33)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_0_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_1_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_2_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_3_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.4')" >
+        pass</a>
+
+    <div id='div_pt1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_4_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5')" >
+        pass</a>
+
+    <div id='div_pt1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.5: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_5_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6')" >
+        pass</a>
+
+    <div id='div_pt1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_6_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7')" >
+        pass</a>
+
+    <div id='div_pt1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.7: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_7_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.8')" >
+        pass</a>
+
+    <div id='div_pt1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.8: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_console_report_8_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9')" >
+        pass</a>
+
+    <div id='div_pt1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.9: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_0_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10')" >
+        pass</a>
+
+    <div id='div_pt1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.10: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_0_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.11')" >
+        fail</a>
+
+    <div id='div_ft1.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.11: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.12' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_0_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.12')" >
+        fail</a>
+
+    <div id='div_ft1.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.12: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.13' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_1_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.13')" >
+        fail</a>
+
+    <div id='div_ft1.13' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.13').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.13: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 40, in test_sale_report
+    self.assertEqual(actual, sale_expect)
+AssertionError: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n\n&lt;head&gt;\n&lt;meta [68234 chars]tml&gt;' != '{"成都":[{"dept_name":"电销部","employee_name"[4677 chars]0}]}'
+Diff is 67012 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 40, in test_sale_report
+    self.assertEqual(actual, sale_expect)
+AssertionError: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n\n&lt;head&gt;\n&lt;meta [68234 chars]tml&gt;' != '{"成都":[{"dept_name":"电销部","employee_name"[4677 chars]0}]}'
+Diff is 67012 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.14' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_1_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.14')" >
+        fail</a>
+
+    <div id='div_ft1.14' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.14').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.14: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[]'
++ []
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[]'
++ []
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.15' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_1_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_today</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.15')" >
+        fail</a>
+
+    <div id='div_ft1.15' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.15').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.15: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_2_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.16')" >
+        pass</a>
+
+    <div id='div_pt1.16' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.16').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.16: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.17' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_2_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.17')" >
+        fail</a>
+
+    <div id='div_ft1.17' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.17').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.17: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_2_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_week</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18')" >
+        pass</a>
+
+    <div id='div_pt1.18' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.18').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.18: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_3_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19')" >
+        pass</a>
+
+    <div id='div_pt1.19' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.19').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.19: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.20' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_3_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.20')" >
+        fail</a>
+
+    <div id='div_ft1.20' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.20').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.20: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.21' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_3_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_month</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.21')" >
+        fail</a>
+
+    <div id='div_ft1.21' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.21').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.21: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.22' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_4_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.22')" >
+        pass</a>
+
+    <div id='div_pt1.22' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.22').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.22: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.23' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_4_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.23')" >
+        fail</a>
+
+    <div id='div_ft1.23' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.23').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.23: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.24' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_4_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_lastweek</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.24')" >
+        pass</a>
+
+    <div id='div_pt1.24' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.24').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.24: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.25' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_5_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.25')" >
+        pass</a>
+
+    <div id='div_pt1.25' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.25').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.25: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.26' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_5_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.26')" >
+        fail</a>
+
+    <div id='div_ft1.26' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.26').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.26: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[]'
++ []
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[]'
++ []
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.27' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_5_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_lastmonth</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.27')" >
+        pass</a>
+
+    <div id='div_pt1.27' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.27').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.27: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.28' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_6_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.28')" >
+        pass</a>
+
+    <div id='div_pt1.28' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.28').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.28: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.29' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_6_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.29')" >
+        fail</a>
+
+    <div id='div_ft1.29' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.29').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.29: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[]'
++ []
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[]'
++ []
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.30' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_6_http_192_168_1_2_8080_WoniuBoss2_5_reportjob_queryJobInfo_selectTime_year</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.30')" >
+        fail</a>
+
+    <div id='div_ft1.30' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.30').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.30: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 56, in test_sale_report
+    self.assertEqual(actual, job_expect)
+AssertionError: '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[203 chars]"}]}' != '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}'
+- {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"student_name":"付文攀","job_time":"2020-02-27","school":"重庆市城市职业学院","job_position":"Java%E5%B7%A5%E7%A8%8B%E5%B8%88","ent_name":"凡客诚品（北京）科技有限公司","salary":"8000"}]}
++ {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.31' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_7_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.31')" >
+        pass</a>
+
+    <div id='div_pt1.31' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.31').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.31: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft1.32' class='none'>
+    <td class='failCase'><div class='testcase'>test_sale_report_7_http_192_168_1_2_8080_WoniuBoss2_5_report_countBySource</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.32')" >
+        fail</a>
+
+    <div id='div_ft1.32' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.32').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.32: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_report_center.py", line 48, in test_sale_report
+    self.assertEqual(actual, mark_expect)
+AssertionError: '' != '[{"numcq":0,"source_cd":"招聘会","numcd":1,"[64 chars]20}]'
++ [{"numcq":0,"source_cd":"招聘会","numcd":1,"source_cq":"","num":21,"source_xa":"招聘会","source":"招聘会","numxa":20}]
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.33' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_sale_report_8_http_192_168_1_2_8080_WoniuBoss2_5_report_countByCounselor</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.33')" >
+        pass</a>
+
+    <div id='div_pt1.33' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.33').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.33: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss.bin.test_market_sale.TestMarketSale</td>
+    <td>11</td>
+    <td>0</td>
+    <td>11</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',11)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_0_http_192_168_1_2_8080_WoniuBoss2_5_market_queryNetCus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        fail</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":10,"pageNumber":1,"firstPage":true,"lastP[1688 chars]]}\n'
+Diff is 1851 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":10,"pageNumber":1,"firstPage":true,"lastP[1688 chars]]}\n'
+Diff is 1851 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_0_http_192_168_1_2_8080_WoniuBoss2_5_market_saveAddCus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        fail</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 30, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != 'adda-pass'
++ adda-pass
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 30, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != 'adda-pass'
++ adda-pass
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_0_http_192_168_1_2_8080_WoniuBoss2_5_upload_dept_1_region_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.3')" >
+        fail</a>
+
+    <div id='div_ft2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '总共上传:1 有效数量:1 数据库重复数量:0  存入数量1'
++ 总共上传:1 有效数量:1 数据库重复数量:0  存入数量1
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '总共上传:1 有效数量:1 数据库重复数量:0  存入数量1'
++ 总共上传:1 有效数量:1 数据库重复数量:0  存入数量1
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_1_http_192_168_1_2_8080_WoniuBoss2_5_market_queryNetCus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.4')" >
+        fail</a>
+
+    <div id='div_ft2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":6,"pageNumber":1,"firstPage":true,"lastPa[1033 chars]1}]}'
+Diff is 1197 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":6,"pageNumber":1,"firstPage":true,"lastPa[1033 chars]1}]}'
+Diff is 1197 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_1_http_192_168_1_2_8080_WoniuBoss2_5_market_saveAddCus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.5')" >
+        fail</a>
+
+    <div id='div_ft2.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 30, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != 'add-fail'
++ add-fail
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 30, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != 'add-fail'
++ add-fail
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_1_http_192_168_1_2_8080_WoniuBoss2_5_upload_dept_1_region_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.6')" >
+        fail</a>
+
+    <div id='div_ft2.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '上传内容不正确'
++ 上传内容不正确
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '上传内容不正确'
++ 上传内容不正确
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_2_http_192_168_1_2_8080_WoniuBoss2_5_market_queryNetCus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.7')" >
+        fail</a>
+
+    <div id='div_ft2.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.7: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":6,"pageNumber":1,"firstPage":true,"lastPa[1033 chars]1}]}'
+Diff is 1197 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":6,"pageNumber":1,"firstPage":true,"lastPa[1033 chars]1}]}'
+Diff is 1197 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_2_http_192_168_1_2_8080_WoniuBoss2_5_upload_dept_1_region_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.8')" >
+        fail</a>
+
+    <div id='div_ft2.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.8: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '总共上传:1 有效数量:1 数据库重复数量:0  存入数量1'
++ 总共上传:1 有效数量:1 数据库重复数量:0  存入数量1
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '总共上传:1 有效数量:1 数据库重复数量:0  存入数量1'
++ 总共上传:1 有效数量:1 数据库重复数量:0  存入数量1
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_3_http_192_168_1_2_8080_WoniuBoss2_5_market_queryNetCus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.9')" >
+        fail</a>
+
+    <div id='div_ft2.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.9: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":6,"pageNumber":1,"firstPage":true,"lastPa[1033 chars]1}]}'
+Diff is 1197 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 46, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":6,"pageNumber":1,"firstPage":true,"lastPa[1033 chars]1}]}'
+Diff is 1197 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_3_http_192_168_1_2_8080_WoniuBoss2_5_upload_dept_1_region_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.10')" >
+        fail</a>
+
+    <div id='div_ft2.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.10: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '上传内容不正确'
++ 上传内容不正确
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '上传内容不正确'
++ 上传内容不正确
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_market_add_4_http_192_168_1_2_8080_WoniuBoss2_5_upload_dept_1_region_1</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.11')" >
+        fail</a>
+
+    <div id='div_ft2.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.11: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '总共上传:1 有效数量:0 数据库重复数量:1  存入数量0'
++ 总共上传:1 有效数量:0 数据库重复数量:1  存入数量0
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_market_sale.py", line 38, in test_market_add
+    self.assertEqual(actual, expect)
+AssertionError: '' != '总共上传:1 有效数量:0 数据库重复数量:1  存入数量0'
++ 总共上传:1 有效数量:0 数据库重复数量:1  存入数量0
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss.bin.test_enterprise_manage.TestEnterPrise</td>
+    <td>6</td>
+    <td>2</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',6)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_enterprise_manage_add_0_http_192_168_1_2_8080_WoniuBoss2_5_enterprise_addEnterp_ent_ent_name_E5_A4_A7_E6_B5_B7_E5_85_AC_E5_8F_B8_ent_ent_category_E4_BA_92_E8_81_94_E4_B8_87_E8_A1_8C_E4_B8_9A_ent_ent_addr_E9_AB_98_E6_96_B0_E5_8C_BA_ent_ent_header_E5_93_88_E5_93_88_ent_tel_13088997788_ent_email_2245678456_40qq_com_ent_qq_2245678456</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_enterprise_manage_add_1_http_192_168_1_2_8080_WoniuBoss2_5_enterprise_addEnterp_ent_ent_name_40_23_40_EF_BF_A5_ent_ent_category_E5_93_88_E5_81_B6_ent_ent_addr_E5_8F_AF_E7_82_B9_E5_87_BB_ent_ent_header_kwje_ent_tel_13099898878_ent_email_ent_qq_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        fail</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 30, in test_enterprise_manage_add
+    self.assertEqual(actual, expect)
+AssertionError: '新增成功.' != '新增失败'
+- 新增成功.
++ 新增失败
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 30, in test_enterprise_manage_add
+    self.assertEqual(actual, expect)
+AssertionError: '新增成功.' != '新增失败'
+- 新增成功.
++ 新增失败
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_enterprise_manage_add_2_http_192_168_1_2_8080_WoniuBoss2_5_enterprise_addEnterp_ent_ent_name_E5_A4_A7_E6_B5_B7_E5_85_AC_E5_8F_B8_ent_ent_category_E4_BA_92_E8_81_94_E4_B8_87_E8_A1_8C_E4_B8_9A_ent_ent_addr_E9_AB_98_E6_96_B0_E5_8C_BA_ent_ent_header_E5_93_88_E5_93_88_ent_tel_ent_email_2245678456_40qq_com_ent_qq_2245678456</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.3')" >
+        fail</a>
+
+    <div id='div_ft3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 30, in test_enterprise_manage_add
+    self.assertEqual(actual, expect)
+AssertionError: '新增成功.' != '新增失败'
+- 新增成功.
++ 新增失败
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 30, in test_enterprise_manage_add
+    self.assertEqual(actual, expect)
+AssertionError: '新增成功.' != '新增失败'
+- 新增成功.
++ 新增失败
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_enterprise_manage_add_3_http_192_168_1_2_8080_WoniuBoss2_5_enterprise_addEnterp_ent_ent_name_E5_A4_A7_E6_B5_B7_E5_85_AC_E5_8F_B8_ent_ent_category_E4_BA_92_E8_81_94_E4_B8_87_E8_A1_8C_E4_B8_9A_ent_ent_addr_E9_AB_98_E6_96_B0_E5_8C_BA_ent_ent_header_E5_93_88_E5_93_88_ent_tel_ent_email_2245678456_40qq_com_ent_qq_2245678456</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.4')" >
+        fail</a>
+
+    <div id='div_ft3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 30, in test_enterprise_manage_add
+    self.assertEqual(actual, expect)
+AssertionError: '新增成功.' != '新增失败'
+- 新增成功.
++ 新增失败
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 30, in test_enterprise_manage_add
+    self.assertEqual(actual, expect)
+AssertionError: '新增成功.' != '新增失败'
+- 新增成功.
++ 新增失败
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_enterprise_manage_query_0_http_192_168_1_2_8080_WoniuBoss2_5_enterprise_companySearch_companyName_</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.5')" >
+        fail</a>
+
+    <div id='div_ft3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 46, in test_enterprise_manage_query
+    self.assertEqual(actual, expect)
+AssertionError: '' != '{"totalRow":7,"pageNumber":1,"firstPage":[1166 chars]"}]}'
+Diff is 1214 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_enterprise_manage.py", line 46, in test_enterprise_manage_query
+    self.assertEqual(actual, expect)
+AssertionError: '' != '{"totalRow":7,"pageNumber":1,"firstPage":[1166 chars]"}]}'
+Diff is 1214 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_enterprise_manage_update_0_http_192_168_1_2_8080_WoniuBoss2_5_enterprise_updateEnterp_ent_enterprise_id_3_ent_ent_name_E6_B5_B7_E8_BE_89_E8_BD_AF_E4_BB_B6_EF_BC_88_E6_88_90_E9_83_BD_EF_BC_89_E6_9C_89_E9_99_90_E5_85_AC_E5_8F_B8si_ent_ent_category_E9_9B_B6_E5_94_AE_E8_A1_8C_E4_B8_9A_ent_ent_addr_E5_A4_A9_E5_BA_9C_E8_BD_AF_E4_BB_B6_E5_9B_ADd7_13_E6_A5_BC_ent_ent_header_E5_BC_A0_E9_9B_AF_ent_tel_02885196988_ent_email_wen_zhang_40hisoft_com_ent_qq</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.6')" >
+        pass</a>
+
+    <div id='div_pt3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.6: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss.bin.test_job_manage_tech.TestJobManageTech</td>
+    <td>5</td>
+    <td>1</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',5)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_pass_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_insertSrecord_ispass_E9_80_9A_E8_BF_87_sr_skillrecord_student_id_858_sr_questions_E4_BB_80_E4_B9_88_E6_98_AFJSON_E6_A0_BC_E5_BC_8F_sr_valuate_E9_80_9A_E8_BF_87</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        fail</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 30, in test_job_manage_tech_pass
+    self.assertEqual(actual, expect)
+AssertionError: '' != '信息已保存'
++ 信息已保存
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 30, in test_job_manage_tech_pass
+    self.assertEqual(actual, expect)
+AssertionError: '' != '信息已保存'
++ 信息已保存
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_job_manage_tech_query_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_queryPass</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt4.2')" >
+        pass</a>
+
+    <div id='div_pt4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt4.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_query_1_http_192_168_1_2_8080_WoniuBoss2_5_interview_queryUnpass</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.3')" >
+        fail</a>
+
+    <div id='div_ft4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 47, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[277 chars]l}]}'
+- {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
++ {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"orientation":"公共","education":"本科","re_compu":"","sex":"男","student_id":1272,"class_no":"WNCDC034","is_sign":"","student_name":"*****","major":"计算机科学与技术","is_hired":"","school":"西南石油大学","skill":"0","graduation_time":null,"age":null}]}
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 47, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[277 chars]l}]}'
+- {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
++ {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"orientation":"公共","education":"本科","re_compu":"","sex":"男","student_id":1272,"class_no":"WNCDC034","is_sign":"","student_name":"*****","major":"计算机科学与技术","is_hired":"","school":"西南石油大学","skill":"0","graduation_time":null,"age":null}]}
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_query_2_http_192_168_1_2_8080_WoniuBoss2_5_interview_queryInfo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.4')" >
+        fail</a>
+
+    <div id='div_ft4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 47, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":5,"pageNumber":1,"firstPage":true,"lastPa[1246 chars]"}]}' != '{"totalRow":7,"pageNumber":1,"firstPage":true,"lastPa[1712 chars]l}]}'
+Diff is 4865 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 47, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":5,"pageNumber":1,"firstPage":true,"lastPa[1246 chars]"}]}' != '{"totalRow":7,"pageNumber":1,"firstPage":true,"lastPa[1712 chars]l}]}'
+Diff is 4865 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_unpass_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_insertSrecord_ispass_E6_9C_AA_E9_80_9A_E8_BF_87_sr_skillrecord_student_id_1272_sr_questions_wede_sr_valuate_ew</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        fail</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 38, in test_job_manage_tech_unpass
+    self.assertEqual(actual, expect)
+AssertionError: '' != '信息已保存'
++ 信息已保存
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage_tech.py", line 38, in test_job_manage_tech_unpass
+    self.assertEqual(actual, expect)
+AssertionError: '' != '信息已保存'
++ 信息已保存
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>WoniuBoss.bin.test_job_manage.TestJobManage</td>
+    <td>6</td>
+    <td>1</td>
+    <td>5</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',6)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_job_manage_commit_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_checkOther_reCompu_1_isSign_0_isHired_0_stuId_851</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt5.1')" >
+        pass</a>
+
+    <div id='div_pt5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt5.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_pass_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_insertMrecord_m_minterview_student_id_584_m_intent_salary_7000_m_comm_E4_BC_98_m_remark_E5_8F_AF_E4_BB_A5_E6_8E_A8_E8_8D_90</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        fail</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 34, in test_job_manage_pass
+    self.assertEqual(actual, expect)
+AssertionError: '' != '信息已保存'
++ 信息已保存
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 34, in test_job_manage_pass
+    self.assertEqual(actual, expect)
+AssertionError: '' != '信息已保存'
++ 信息已保存
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_query_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_insertJobRegist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.3')" >
+        fail</a>
+
+    <div id='div_ft5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.3: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 69, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '' != '保存信息成功'
++ 保存信息成功
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 69, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '' != '保存信息成功'
++ 保存信息成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_query_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_insertRrecord</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.4')" >
+        fail</a>
+
+    <div id='div_ft5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.4: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 60, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '' != '保存信息成功'
++ 保存信息成功
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 60, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '' != '保存信息成功'
++ 保存信息成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_query_0_http_192_168_1_2_8080_WoniuBoss2_5_interview_queryStuByInfo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.5')" >
+        fail</a>
+
+    <div id='div_ft5.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.5: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 51, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":3,"pageNumber":1,"firstPage":true,"lastPa[787 chars]l}]}'
+Diff is 951 characters long. Set self.maxDiff to None to see it.
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 51, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":3,"pageNumber":1,"firstPage":true,"lastPa[787 chars]l}]}'
+Diff is 951 characters long. Set self.maxDiff to None to see it.
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_job_manage_tech_query_1_http_192_168_1_2_8080_WoniuBoss2_5_interview_queryStuByInfo</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.6')" >
+        fail</a>
+
+    <div id='div_ft5.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.6: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 51, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[293 chars]"}]}'
+- {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
++ {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"orientation":"开发","education":"大专","re_compu":"1","sex":"男","student_id":584,"class_no":"WNCDC027","is_sign":"1","student_name":"*****","major":"机械设计制造及其自动化","is_hired":"1","school":"重庆市城市职业学院","skill":"1","graduation_time":"2014-07-01","age":"23"}]}
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\Python\Python36\site-packages\parameterized\parameterized.py", line 518, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "C:\Project\WoniuBoss\bin\test_job_manage.py", line 51, in test_job_manage_tech_query
+    self.assertEqual(actual, expect)
+AssertionError: '{"totalRow":0,"pageNumber":1,"firstPage":true,"lastPa[43 chars]:[]}' != '{"totalRow":1,"pageNumber":1,"firstPage":true,"lastPa[293 chars]"}]}'
+- {"totalRow":0,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":0,"pageSize":10,"list":[]}
++ {"totalRow":1,"pageNumber":1,"firstPage":true,"lastPage":true,"totalPage":1,"pageSize":10,"list":[{"orientation":"开发","education":"大专","re_compu":"1","sex":"男","student_id":584,"class_no":"WNCDC027","is_sign":"1","student_name":"*****","major":"机械设计制造及其自动化","is_hired":"1","school":"重庆市城市职业学院","skill":"1","graduation_time":"2014-07-01","age":"23"}]}
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>61</td>
+    <td>24</td>
+    <td>37</td>
+    <td>0</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
